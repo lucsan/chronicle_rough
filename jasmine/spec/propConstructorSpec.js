@@ -52,4 +52,16 @@ describe('propConstructor', function() {
     expect(typeof props.testThing.actions.env.pickUp).toBe('function')
   })
 
+  it('adds a default hold action.', () => {
+    let plans = testPlans()
+    const props = propConstructor().propsList(plans)
+    expect(typeof props.testThing.actions.inv.hold === undefined).toBe(false)
+  })
+
+  it('adds a default pack action.', () => {
+    let plans = testPlans()
+    const props = propConstructor().propsList(plans)
+    expect(typeof props.testThing.actions.bod.pack === undefined).toBe(false)
+  })
+
 })

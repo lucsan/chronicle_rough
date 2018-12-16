@@ -4,21 +4,11 @@ const propPlans = {
   default: {
     artist: '',
     desc: '',
+    loc: '',
     locs: [],
     pickUp: false,
     hit: true, // can hit things with it
-    // actions: {
-    //   // env: {},
-    //   // inv: {},
-    //   // bod: {}
-    // },
     strikes: false, // retaliates
-    // properties: {
-    //   attack: 0,
-    //   defense: 0,
-    //   weight: 0,
-    //   drops: []
-    // }
   },
   stick: {
     desc: 'a nice stick',
