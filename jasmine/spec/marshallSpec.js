@@ -8,10 +8,12 @@ describe('marshalling', function() {
 
   afterAll(function(){
     console.groupCollapsed('marshall')
-    console.log('cabinet', marshall.cabinet)
-    console.log('character', marshall.character());
-    console.log('chest', marshall.chest());
-    console.log('rigging', marshall.rigging());
+    console.info('cabinet', marshall.cabinet)
+    console.info('character', marshall.character())
+    console.info('chest', marshall.chest())
+    console.info('rigging', marshall.rigging())
+    console.info('sets', marshall.sets())
+    console.info('props', marshall.props())
     console.groupEnd()
   })
 
@@ -22,7 +24,6 @@ describe('marshalling', function() {
   it('has a cabinet', function() {
     let cabinet = marshall.cabinet
     expect(typeof cabinet).toEqual('object')
-
   })
 
   it('can load props', function() {
@@ -42,15 +43,6 @@ describe('marshalling', function() {
     expect(sets.start.exits.length > 0).toEqual(true)
   })
 
-
-
-  // it('cant be changed', function(){
-  //   let m1 = marshall()
-  //   m1.cabinet.character = {'name': 'test'}
-  //   m2.cabinet.character = {'name': 'test2'}
-  //   expect(m1.cabinet.character.name).toEqual('test')
-  // })
-
   it('can create a new character', function(){
     marshall.newCharacter('barry')
     expect(marshall.cabinet.character.name).toEqual('barry')
@@ -65,10 +57,12 @@ describe('marshalling', function() {
     let location = 'newPlace'
     marshall.newCharacter('harry')
     marshall.character({location: location })
-    console.log(marshall.character());
     expect(marshall.cabinet.character.location).toEqual(location)
   })
 
+  // it('can marshall props and sets by location', function() {
+  //
+  // })
 
 
 

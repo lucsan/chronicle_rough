@@ -20,13 +20,17 @@ rules:
   no-console:
     - error
     - allow:
-      - log
+      - info
+      - error
+      - groupCollapsed
+      - groupEnd
 globals:
-  application: true
-  autoload: true
-  app: true
-  stagi: true
-  actions: true
-  describe: true
-  expect: true
-  it: true
+  application: false
+  autoload: false
+  app: false
+  actions: false
+  describe: false
+  expect: false
+  it: false
+  beforeAll: false
+  afterAll: false

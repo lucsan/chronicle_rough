@@ -30,8 +30,10 @@ const autoload = () => {
     const path = ''
     s.fl.push(`${path}app/components/game/config.js`)
     s.fl.push(`${path}app/components/data/propPlans.js`)
-    s.fl.push(`${path}app/components/data/setsPlans.js`)    
+    s.fl.push(`${path}app/components/data/setsPlans.js`)
     s.fl.push(`${path}app/components/game/marshalling.js`)
+    s.fl.push(`${path}app/components/game/actions.js`)
+    s.fl.push(`${path}app/components/game/constructors/prop.js`)
 
 
     // s.fl.push(`${path}app/tools/componentBuilder.js`)

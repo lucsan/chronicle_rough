@@ -1,5 +1,8 @@
 /* global defaults: true */
 const marshalling = () => {
+  /* Marshalling is concerned with the loading, unloading
+   * and regulation of data, into itseslf
+  */
   let cabinet = {
     debug: false,
     moves: 0,
@@ -62,14 +65,11 @@ const marshalling = () => {
     return {...cabinet.rigging}
   }
 
-  // const defaultCharacter = (aName) => {
-  //   return character({
-  //     name: aName,
-  //     health: 100,
-  //     level: 1,
-  //     location: 'start'
-  //   })
-  // }
+  const locations = () => {
+    // Creates an array of locations with props.
+    // Not a marshalling ativity
+    return
+  }
 
   const newCharacter = (aName) => {
     let newChar = {...defaults.character}

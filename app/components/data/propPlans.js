@@ -1,6 +1,25 @@
 const propPlans = {
   /* global actions: true */
   /*eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
+  default: {
+    artist: '',
+    desc: '',
+    locs: [],
+    pickUp: false,
+    hit: true, // can hit things with it
+    // actions: {
+    //   // env: {},
+    //   // inv: {},
+    //   // bod: {}
+    // },
+    strikes: false, // retaliates
+    // properties: {
+    //   attack: 0,
+    //   defense: 0,
+    //   weight: 0,
+    //   drops: []
+    // }
+  },
   stick: {
     desc: 'a nice stick',
     locs: ['start', 'creepyWoods'],
@@ -8,8 +27,8 @@ const propPlans = {
     actions: {
       // TODO synonyms for pick up? remove, get, take.
       env: {
-        'pick up': () => actions().pickUp('stick'),
-        'kick': () => { stage().respond('You kick the nice stick') },
+        pickUp: () => actions().pickUp('stick'),
+        kick: () => { stage().respond('You kick the nice stick') },
       },
       inv: {
         // combines
@@ -68,7 +87,7 @@ const propPlans = {
     desc: 'a mysterious lintstick, it has some pocket lint stuck to it. I wonder what this is for?',
     actions: {
       env: {
-        'pick up': () => actions().pickUp('lintStick'),
+        pickUp: () => actions().pickUp('lintStick'),
       },
       inv: {
         give: () => console.log(`give to gnome`),
@@ -110,7 +129,7 @@ const propPlans = {
       attack: 3,
       defense: 2,
       health: 4,
-      drops: 'penny',
+      drops: ['penny'],
     },
   },
 
@@ -119,7 +138,7 @@ const propPlans = {
     locs: ['creepyWoods'],
     actions: {
       env: {
-        'pick up': () => actions().pickUp('stick'),
+        pickUp: () => actions().pickUp('stick'),
       },
     },
   },
