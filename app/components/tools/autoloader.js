@@ -14,17 +14,19 @@ const scriptLoader = (uri, callback) => {
   head.appendChild(script)
 }
 
-const loaded = () => {
-  s.fc = s.fc - 1
-  if (s.fc === 0) {
-    document.dispatchEvent(new Event('chronicle_modules_loaded'))
-  }
-}
+
 
 const autoload = () => {
   let s = {}
   s.fl = []
   s.fc = 0
+
+  const loaded = () => {
+    s.fc = s.fc - 1
+    if (s.fc === 0) {
+      document.dispatchEvent(new Event('chronicle_modules_loaded'))
+    }
+  }
 
   const loadFiles = () => {
     const path = ''
