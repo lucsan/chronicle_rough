@@ -1,6 +1,10 @@
 const setsPlans = {
   // place {id name}: Description (with tokens)
   start: {
+    desc: 'nowhere, it exists somewhere at the begining',
+    exits: [{ id: 'clearing'}]
+  },
+  clearing: {
     desc: 'a sun dappled clearing',
     proseScript: 'clearing',
     author: 'lucsan',

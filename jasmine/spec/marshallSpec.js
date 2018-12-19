@@ -9,6 +9,7 @@ describe('marshalling', function() {
   afterAll(function(){
     console.groupCollapsed('marshall')
     console.info('cabinet', marshall.cabinet)
+    console.info('player', marshall.player())
     console.info('character', marshall.character())
     console.info('chest', marshall.chest())
     console.info('rigging', marshall.rigging())
@@ -43,6 +44,11 @@ describe('marshalling', function() {
     expect(sets.start.exits.length > 0).toEqual(true)
   })
 
+  it('can create a new player', () => {
+    const p = marshall.newPlayer('Hyronimous Bosch')
+    expect(marshall.player().name).toEqual('Hyronimous Bosch')
+  })
+
   it('can create a new character', function(){
     marshall.newCharacter('barry')
     expect(marshall.cabinet.character.name).toEqual('barry')
@@ -58,6 +64,11 @@ describe('marshalling', function() {
     marshall.newCharacter('harry')
     marshall.character({location: location })
     expect(marshall.cabinet.character.location).toEqual(location)
+  })
+
+  it('returns rigging', () => {
+    let rigging = marshall.rigging()
+    expect(typeof rigging).toEqual('object')
   })
 
   // it('can marshall props and sets by location', function() {

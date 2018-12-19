@@ -36,28 +36,13 @@ const autoload = () => {
     s.fl.push(`${path}app/components/game/marshalling.js`)
     s.fl.push(`${path}app/components/game/actions.js`)
     s.fl.push(`${path}app/components/game/constructors/prop.js`)
-
-
-    // s.fl.push(`${path}app/tools/componentBuilder.js`)
-    // s.fl.push(`${path}app/tools/tools.js`)
-    // s.fl.push(`${path}app/tools/store.js`)
-    // s.fl.push(`${path}app/tools/tokenizer.js`)
-    // s.fl.push(`${path}app/components/rigging.js`)
-    // s.fl.push(`${path}app/components/stageInterface.js`)
-    // s.fl.push(`${path}app/components/stage.js`)
-    // s.fl.push(`${path}app/components/characters.js`)
-    // s.fl.push(`${path}app/components/player.js`)
-    // s.fl.push(`${path}app/components/actions.js`)
-    // s.fl.push(`${path}app/components/playarea.js`)
-    // s.fl.push(`${path}app/components/game.js`)
-    // s.fl.push(`${path}app/components/thingsHandler.js`)
-    // s.fl.push(`${path}app/data/places.js`)
-    // s.fl.push(`${path}app/data/things.js`)
-    // s.fl.push(`${path}app/data/lexicon.js`)
+    s.fl.push(`${path}app/components/game/player.js`)
+    s.fl.push(`${path}app/components/game/stage.js`)
+    s.fl.push(`${path}app/components/game/theaterRoyal.js`)
+    s.fl.push(`${path}app/components/game/theaterHeadless.js`)
 
     s.fc = s.fl.length
     for (let f of s.fl) {
-      //loadScript(f, loaded)
       scriptLoader(f, loaded)
     }
   }

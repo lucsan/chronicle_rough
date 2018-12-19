@@ -10,8 +10,8 @@ const marshalling = () => {
     props: {}, // objects from the things file.
     chest: {}, // a storage chest to save things in.
     rigging: {}, // all the data needed by a stage.
-    character: {}
-
+    character: {},
+    player: {}
   }
 
   const character = (...v) => {
@@ -51,7 +51,6 @@ const marshalling = () => {
       if (i.location) {
         // do something
       }
-
     })
     return {...cabinet.chest}
   }
@@ -85,6 +84,17 @@ const marshalling = () => {
     return {...cabinet.character}
   }
 
+  const player = () => {
+    return {...cabinet.player}
+  }
+
+  const newPlayer = (name) => {
+    cabinet.player = { name: name }
+    cabinet.chest.player = { name: name }
+    cabinet.rigging.player = { name: name }
+    return {...cabinet.player}
+  }
+
   // const location = (...v) => {
   //   v.map( i => {
   //     if (i.)
@@ -95,9 +105,12 @@ const marshalling = () => {
     cabinet: {...cabinet},
     props,
     sets,
+    player,
+    newPlayer,
     character,
+    newCharacter,
     chest,
     rigging,
-    newCharacter,
+
   }
 }
