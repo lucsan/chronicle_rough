@@ -62,7 +62,6 @@ describe('marshalling', () => {
 
   it('can create a new character', function(){
     marshall.character('barry')
-    console.log(marshall.character());
     expect(marshall.character().name).toEqual('barry')
   })
 
@@ -83,12 +82,16 @@ describe('marshalling', () => {
     expect(typeof rigging).toBe('object')
   })
 
-  it('can marshall props by location', function() {
+  it('can return props by location', function() {
     marshall.props(propPlans)
     let p = marshall.propsByLocation('start')
     expect(p[0].id).toBe('stick')
   })
 
-
+  it('can return sets by id', function() {
+    marshall.sets(setsPlans)
+    let s = marshall.setsById('start')
+    expect(s.id).toBe('start')
+  })
 
 })

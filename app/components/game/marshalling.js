@@ -11,7 +11,9 @@ const marshalling = () => {
     chest: {}, // a storage chest to save things in.
     rigging: {}, // all the data needed by a stage.
     character: {},
-    player: {}
+    player: {},
+    places: {}, // Sets which have been visited, and their props
+    boxes: {} // inv and bod props
   }
 
   const character = (...v) => {
@@ -53,7 +55,8 @@ const marshalling = () => {
   const moved = (to) => {
     if (to === cabinet.character.location || to == '') return
     cabinet.character.location = to
-    chest({location: to})
+    cabinet.places[to] = setsById(to)
+    chest({places: cabinet.places})
     rigging({location: to})
   }
 
@@ -62,9 +65,6 @@ const marshalling = () => {
       if (i.character) cabinet.chest.character = i.character
       if (i.places) cabinet.chest.places = i.places
       if (i.boxes) cabinet.chest.boxes = i.boxes
-      if (i.location) {
-        // do something
-      }
     })
     return {...cabinet.chest}
   }
@@ -132,6 +132,13 @@ const marshalling = () => {
     return selected
   }
 
+  const setsById = (id) => {
+    for (let s in cabinet.sets) {
+      if (cabinet.sets[s].id === id) { return cabinet.sets[s]}
+    }
+    return false
+  }
+
   return {
     cabinet: {...cabinet},
     props,
@@ -140,6 +147,7 @@ const marshalling = () => {
     character,
     chest,
     rigging,
-    propsByLocation
+    propsByLocation,
+    setsById
   }
 }

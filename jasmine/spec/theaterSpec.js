@@ -5,9 +5,9 @@ describe('theater', () => {
   //let theater = theaterSpace(stage)
 
   it('it can make a stage', () => {
-    console.log(marshall);
+    //console.log(marshall);
     //console.log(stage);
-    console.log(theater);
+    //console.log(theater);
 
     theater.buildStage()
 

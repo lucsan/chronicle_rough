@@ -37,6 +37,8 @@ function application() {
 
   const characterLoaded = () => {
     console.log('character', marshall.character());
+
+    marshall.character({ location: 'clearing'})
   }
 
   return {
