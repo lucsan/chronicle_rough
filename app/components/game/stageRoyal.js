@@ -15,15 +15,21 @@ const stageRoyal = (rigging) => {
     el('playerForm', 'buttonClass', 'playerNameOKButton' ).button( 'OK', eventAction)
   }
 
+  const clearPlayerInput = () => { el().removeElement('playerForm') }
+
   const inputCharacterName = (eventAction) => {
     el('characterDetails', undefined, 'charForm').div('character')
     el('charForm', undefined, 'charName').input()
     el('charForm', 'buttonClass', 'charNameOKButton' ).button( 'OK', eventAction)
   }
 
+  const clearCharacterInput = () => {el().removeElement('charForm') }
+
   return {
     build,
     inputPlayerName,
-    inputCharacterName
+    clearPlayerInput,
+    inputCharacterName,
+    clearCharacterInput
   }
 }

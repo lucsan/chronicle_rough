@@ -14,6 +14,7 @@ const player = (marshall, theater) => {
 
   const loaded = () => {
     console.log('player loaded');
+    theater.clearPlayerInput()
     //el().removeElement('playerForm')
   }
   document.addEventListener('chronicle_player_loaded', loaded)

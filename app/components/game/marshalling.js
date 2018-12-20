@@ -96,9 +96,6 @@ const marshalling = () => {
     //character(newChar)
     chest(newChest)
     rigging(newRig)
-
-    //tools().storeData(cabinet.character.name, cabinet.chest.character)
-
     return {...cabinet.character}
   }
 
@@ -123,7 +120,7 @@ const marshalling = () => {
   const propsByLocation = (location) => {
     let selected = []
     if (!location) location = cabinet.character.location
-    for (prop in cabinet.props) {
+    for (let prop in cabinet.props) {
       if (cabinet.props[prop].locs === undefined) continue
       cabinet.props[prop].locs.map(p => {
         if (p == location) {
@@ -134,26 +131,12 @@ const marshalling = () => {
     return selected
   }
 
-  // const newPlayer = (name) => {
-  //   cabinet.player = { name: name }
-  //   cabinet.chest.player = { name: name }
-  //   cabinet.rigging.player = { name: name }
-  //   return {...cabinet.player}
-  // }
-
-  // const location = (...v) => {
-  //   v.map( i => {
-  //     if (i.)
-  //   })
-  // }
-
   return {
     cabinet: {...cabinet},
     props,
     sets,
     player,
     character,
-    //newCharacter,
     chest,
     rigging,
     propsByLocation

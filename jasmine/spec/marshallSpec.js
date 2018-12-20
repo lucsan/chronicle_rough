@@ -80,7 +80,7 @@ describe('marshalling', () => {
 
   it('returns rigging', () => {
     let rigging = marshall.rigging()
-    expect(typeof rigging).toEqual('object')
+    expect(typeof rigging).toBe('object')
   })
 
   it('can marshall props by location', function() {
