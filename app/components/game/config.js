@@ -6,9 +6,9 @@ const defaults = {
     location: 'start'
   },
   chest: {
-    character: [],
-    places: [],
-    boxes: []
+    character: {},
+    places: {},
+    boxes: {}
   },
   rigging: {
     character: {},

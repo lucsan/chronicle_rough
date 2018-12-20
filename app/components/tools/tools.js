@@ -2,7 +2,7 @@ const tools = () => {
   let logStore = []
 
   const log = (...v) => {
-    if (debug != true) return
+    //if (debug != true) return
     v.map((e) => { logToStore(e) })
   }
 

@@ -1,18 +1,16 @@
 const theaterSpace = (marshall, stage) => {
 
-  const inputPlayerName = () => {
-    return stage.inputPlayerName(nameAction)
+  const inputPlayerName = (eventAction) => {
+    return stage.inputPlayerName(eventAction)
   }
 
-  const nameAction = () => {
-    let p = document.getElementById('playerName')
-    marshall.player(p.value)
-    document.dispatchEvent(new Event('chronicle_player_loaded'))
-    console.log(p.value);
+  const inputCharacterName = (eventAction) => {
+    return stage.inputCharacterName(eventAction)
   }
 
   return {
     inputPlayerName,
+    inputCharacterName,
     buildStage: () => { stage.build() }
   }
 }

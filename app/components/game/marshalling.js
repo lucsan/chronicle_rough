@@ -15,24 +15,38 @@ const marshalling = () => {
   }
 
   const character = (...v) => {
+
+    if (v.length === 1 && typeof v[0] == 'string') {
+      v[0] = { name: v[0] }
+    }
     v.map( i => {
+      if (i.name && Object.keys(cabinet.character).length == 0) {
+        newCharacter(i.name)
+      }
       if (i.name) cabinet.character.name = i.name
       if (i.health) cabinet.character.health = i.health
       if (i.level) cabinet.character.level = i.level
       if (i.location) moved(i.location)
     })
+    if (v.length > 0) {  console.log(...v); save() }
     return {...cabinet.character}
   }
 
   const props = (v) => {
     if (Object.keys(cabinet.props).length < 1
-      && Object.keys(v).length > 0) cabinet.props = v
+      && Object.keys(v).length > 0) {
+      for( let i in v) { v[i].id = i }
+      cabinet.props = v
+    }
     return {...cabinet.props}
   }
 
   const sets = (v) => {
     if (Object.keys(cabinet.sets).length < 1
-      && Object.keys(v).length > 0) cabinet.sets = v
+      && Object.keys(v).length > 0) {
+      for( let i in v) { v[i].id = i }
+      cabinet.sets = v
+    }
     return {...cabinet.sets}
   }
 
@@ -75,11 +89,15 @@ const marshalling = () => {
     let newChest = {...defaults.chest}
     let newRig = {...defaults.rigging}
     newChar.name = aName
-    newRig.character.name = aName
+    cabinet.character = newChar
+    newRig.character = newChar
+    newChest.character = newChar
 
-    character(newChar)
+    //character(newChar)
     chest(newChest)
     rigging(newRig)
+
+    //tools().storeData(cabinet.character.name, cabinet.chest.character)
 
     return {...cabinet.character}
   }
@@ -89,8 +107,31 @@ const marshalling = () => {
       cabinet.player = { name: name }
       cabinet.chest.player = { name: name }
       cabinet.rigging.player = { name: name }
+      tools().storeData('player', cabinet.chest.player.name)
     }
+
     return {...cabinet.player}
+  }
+
+  const save = () => {
+    cabinet.chest.character = cabinet.character
+    cabinet.rigging.character = cabinet.character
+    tools().storeData('player', cabinet.chest.player)
+    tools().storeData(cabinet.chest.character.name, cabinet.chest.character)
+  }
+
+  const propsByLocation = (location) => {
+    let selected = []
+    if (!location) location = cabinet.character.location
+    for (prop in cabinet.props) {
+      if (cabinet.props[prop].locs === undefined) continue
+      cabinet.props[prop].locs.map(p => {
+        if (p == location) {
+          selected.push(cabinet.props[prop])
+        }
+      })
+    }
+    return selected
   }
 
   // const newPlayer = (name) => {
@@ -111,11 +152,10 @@ const marshalling = () => {
     props,
     sets,
     player,
-    //newPlayer,
     character,
-    newCharacter,
+    //newCharacter,
     chest,
     rigging,
-
+    propsByLocation
   }
 }

@@ -1,14 +1,24 @@
 const stageHeadless = (rigging) => {
 
   let newPlayerName = 'Headless Horseman'
+  let newCharacterName = 'Bill Bobo'
 
   const playerName = (name) => {
     newPlayerName = name
   }
 
   const inputPlayerName = () => {
-    console.log(newPlayerName)
+    console.log('Headless player', newPlayerName)
     return newPlayerName
+  }
+
+  const characterName = (name) => {
+    newCharacterName = name
+  }
+
+  const inputCharacterName = () => {
+    console.log('Headless char', newCharacterName);
+    return newCharacterName
   }
 
   const build = () => {
@@ -18,6 +28,8 @@ const stageHeadless = (rigging) => {
   return {
     build,
     playerName,
-    inputPlayerName
+    characterName,
+    inputPlayerName,
+    inputCharacterName
   }
 }

@@ -8,8 +8,7 @@ describe('player', () => {
   it('can make a player', () => {
     const name = 'Tess Terrer'
     stage.playerName(name) // bypass theater as only headless has playerName func.
-    const p = player(marshall, theater).name()
-    expect(p.name).toBe(name)
+    expect(player(marshall, theater).name()).toBe(name)
   })
 
 

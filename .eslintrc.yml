@@ -28,6 +28,9 @@ globals:
   application: false
   autoload: false
   app: false
+  player: false
+  character: false
+  el: false
   actions: false
   describe: false
   expect: false

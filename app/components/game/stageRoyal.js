@@ -9,14 +9,21 @@ const stageRoyal = (rigging) => {
     el(undefined, 'display', 'testArea').div()
   }
 
-  const inputPlayerName = (nameAction) => {
+  const inputPlayerName = (eventAction) => {
     el('playerDetails', undefined, 'playerForm').div('Player')
     el('playerForm', undefined, 'playerName').input()
-    el('playerForm', 'buttonClass', 'playerNameOKButton' ).button( 'OK', nameAction)
+    el('playerForm', 'buttonClass', 'playerNameOKButton' ).button( 'OK', eventAction)
+  }
+
+  const inputCharacterName = (eventAction) => {
+    el('characterDetails', undefined, 'charForm').div('character')
+    el('charForm', undefined, 'charName').input()
+    el('charForm', 'buttonClass', 'charNameOKButton' ).button( 'OK', eventAction)
   }
 
   return {
     build,
-    inputPlayerName
+    inputPlayerName,
+    inputCharacterName
   }
 }

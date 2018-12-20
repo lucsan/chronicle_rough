@@ -1,9 +1,13 @@
 describe('marshalling', () => {
 
   let marshall
+  // let stage
+  // let theater
 
   beforeAll(function(){
     marshall = marshalling()
+    // stage = stageHeadless(marshall.rigging())
+    // theater = theaterSpace(marshall, stage)
   })
 
   afterAll(function(){
@@ -14,10 +18,13 @@ describe('marshalling', () => {
     if (typeof marshall.player() == 'object') {
       console.info('player', marshall.player())
     }
+    // if (typeof marshall.sets() == 'object') {
+    //   console.info('player', marshall.sets())
+    // }
+
     // console.info('character', marshall.character())
     // console.info('chest', marshall.chest())
     // console.info('rigging', marshall.rigging())
-    // console.info('sets', marshall.sets())
     // console.info('props', marshall.props())
     console.groupEnd()
   })
@@ -49,25 +56,26 @@ describe('marshalling', () => {
   })
 
   it('can create a new player', () => {
-    const p = marshall.player('Hyronimous Bosch')
+    marshall.player('Hyronimous Bosch')
     expect(marshall.player().name).toEqual('Hyronimous Bosch')
   })
 
   it('can create a new character', function(){
-    marshall.newCharacter('barry')
-    expect(marshall.cabinet.character.name).toEqual('barry')
+    marshall.character('barry')
+    console.log(marshall.character());
+    expect(marshall.character().name).toEqual('barry')
   })
 
   it('creates a chest and rigging', function(){
-    marshall.newCharacter('sally')
+    marshall.character('sally')
     expect(marshall.cabinet.rigging.character.name).toEqual('sally')
   })
 
-  it('can move the characters location', function(){
+  it('can move the character location', function(){
     let location = 'newPlace'
-    marshall.newCharacter('harry')
+    marshall.character('harry')
     marshall.character({location: location })
-    expect(marshall.cabinet.character.location).toEqual(location)
+    expect(marshall.character().location).toEqual(location)
   })
 
   it('returns rigging', () => {
@@ -75,9 +83,11 @@ describe('marshalling', () => {
     expect(typeof rigging).toEqual('object')
   })
 
-  // it('can marshall props and sets by location', function() {
-  //
-  // })
+  it('can marshall props by location', function() {
+    marshall.props(propPlans)
+    let p = marshall.propsByLocation('start')
+    expect(p[0].id).toBe('stick')
+  })
 
 
 

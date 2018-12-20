@@ -3,17 +3,17 @@ function application() {
   let theater = {}
 
   const init = () => {
+    localStorage.clear()
     autoload().loadFiles()
     document.addEventListener('chronicle_modules_loaded', modulesLoaded)
     document.addEventListener('chronicle_player_loaded', playerLoaded)
+    document.addEventListener('chronicle_character_loaded', characterLoaded)
   }
 
   const modulesLoaded = () => {
     console.info('modulesLoaded')
     marshall = marshalling()
     console.info('Marshall created', marshall)
-    marshall.newCharacter('bazzo bingbat')
-    console.info('Character created', marshall.character())
     marshall.props(propPlans)
     marshall.sets(setsPlans)
     console.info('Loaded sets and props', marshall.sets(), marshall.props())
@@ -28,10 +28,19 @@ function application() {
   }
 
   const playerLoaded = () => {
-    console.log('pl', marshall.cabinet);
-    console.log(marshall.player());
-    // save player name
-    
+    //marshall.newCharacter('bazzo bingbat')
+    //console.info('Character created', marshall.character())
+    //console.log('pl', marshall.cabinet);
+    console.log('player', marshall.player());
+
+
+    character(marshall, theater).name()
+    document.getElementById('charName').value = 'Charac Tername'
+    document.getElementById('charNameOKButton').click()
+  }
+
+  const characterLoaded = () => {
+    console.log('loaded char', marshall.character());
   }
 
   return {
