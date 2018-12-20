@@ -8,7 +8,10 @@ const defaults = {
   chest: {
     character: {},
     places: {},
-    boxes: {}
+    boxes: {
+      bod: {},
+      inv: {}
+    }
   },
   rigging: {
     character: {},

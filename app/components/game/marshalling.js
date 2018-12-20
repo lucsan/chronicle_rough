@@ -114,7 +114,8 @@ const marshalling = () => {
     cabinet.chest.character = cabinet.character
     cabinet.rigging.character = cabinet.character
     tools().storeData('player', cabinet.chest.player)
-    tools().storeData(cabinet.chest.character.name, cabinet.chest.character)
+    tools().storeData(cabinet.chest.character.name, cabinet.chest)
+
   }
 
   const propsByLocation = (location) => {
