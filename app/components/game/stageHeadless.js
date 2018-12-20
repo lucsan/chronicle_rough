@@ -1,4 +1,4 @@
-const theaterHeadless = () => {
+const stageHeadless = (rigging) => {
 
   let newPlayerName = 'Headless Horseman'
 
@@ -12,6 +12,7 @@ const theaterHeadless = () => {
   }
 
   return {
+    makeDisplays: () => { console.log('displays made (There are no displays)') },
     playerName,
     inputPlayerName
   }

@@ -1,6 +1,6 @@
-describe('config', function() {
+describe('config', () => {
 
-  it('has a default character', function() {
+  it('has a default character', () => {
     expect(defaults.character.name).toBe('')
   })
 })

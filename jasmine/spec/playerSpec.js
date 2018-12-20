@@ -1,11 +1,18 @@
-describe('player', function() {
-  let marshall = marshalling()
-  let theater = theaterHeadless()
+describe('player', () => {
 
-  it('can make a player', function() {
+  let marshall = marshalling()
+  let stage = stageHeadless(marshall.rigging())
+  let theater = theaterSpace(stage)
+
+
+  it('can make a player', () => {
     const name = 'Tess Terrer'
-    theater.playerName(name)
-    const p = player(marshall, theater).newPlayer()
+    stage.playerName(name) // bypass theater as only headless has playerName func.
+    const p = player(marshall, theater).name()
     expect(p.name).toBe(name)
   })
+
+
+
+
 })

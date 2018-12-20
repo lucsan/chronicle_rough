@@ -31,15 +31,16 @@ const autoload = () => {
   const loadFiles = () => {
     const path = ''
     s.fl.push(`${path}app/components/game/config.js`)
+    s.fl.push(`${path}app/components/tools/elementBuilder.js`)
     s.fl.push(`${path}app/components/data/propPlans.js`)
     s.fl.push(`${path}app/components/data/setsPlans.js`)
     s.fl.push(`${path}app/components/game/marshalling.js`)
     s.fl.push(`${path}app/components/game/actions.js`)
     s.fl.push(`${path}app/components/game/constructors/prop.js`)
     s.fl.push(`${path}app/components/game/player.js`)
-    s.fl.push(`${path}app/components/game/stage.js`)
-    s.fl.push(`${path}app/components/game/theaterRoyal.js`)
-    s.fl.push(`${path}app/components/game/theaterHeadless.js`)
+    s.fl.push(`${path}app/components/game/theaterSpace.js`)
+    s.fl.push(`${path}app/components/game/stageRoyal.js`)
+    s.fl.push(`${path}app/components/game/stageHeadless.js`)
 
     s.fc = s.fl.length
     for (let f of s.fl) {

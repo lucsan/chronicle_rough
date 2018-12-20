@@ -1,4 +1,4 @@
-describe('marshalling', function() {
+describe('marshalling', () => {
 
   let marshall
 
@@ -8,17 +8,21 @@ describe('marshalling', function() {
 
   afterAll(function(){
     console.groupCollapsed('marshall')
-    console.info('cabinet', marshall.cabinet)
-    console.info('player', marshall.player())
-    console.info('character', marshall.character())
-    console.info('chest', marshall.chest())
-    console.info('rigging', marshall.rigging())
-    console.info('sets', marshall.sets())
-    console.info('props', marshall.props())
+    if (typeof marshall.cabinet == 'object') {
+      console.info('cabinet', marshall.cabinet)
+    }
+    if (typeof marshall.player() == 'object') {
+      console.info('player', marshall.player())
+    }
+    // console.info('character', marshall.character())
+    // console.info('chest', marshall.chest())
+    // console.info('rigging', marshall.rigging())
+    // console.info('sets', marshall.sets())
+    // console.info('props', marshall.props())
     console.groupEnd()
   })
 
-  it('exists', function() {
+  it('exists', () => {
     expect(typeof marshall).toEqual('object')
   })
 
