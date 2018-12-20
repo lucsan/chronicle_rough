@@ -17,7 +17,7 @@ function application() {
     marshall.props(propPlans)
     marshall.sets(setsPlans)
     console.info('Loaded sets and props', marshall.sets(), marshall.props())
-    let stage = stageRoyal(marshall.rigging())
+    let stage = stageRoyal(marshall.rigging)
     theater = theaterSpace(marshall, stage)
     theater.buildStage()
     player(marshall, theater).name()
@@ -28,19 +28,15 @@ function application() {
   }
 
   const playerLoaded = () => {
-    //marshall.newCharacter('bazzo bingbat')
-    //console.info('Character created', marshall.character())
-    //console.log('pl', marshall.cabinet);
     console.log('player', marshall.player());
-
-
     character(marshall, theater).name()
+    // Auto name and fire character
     document.getElementById('charName').value = 'Charac Tername'
     document.getElementById('charNameOKButton').click()
   }
 
   const characterLoaded = () => {
-    console.log('loaded char', marshall.character());
+    console.log('character', marshall.character());
   }
 
   return {

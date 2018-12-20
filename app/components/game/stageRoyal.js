@@ -1,7 +1,7 @@
 const stageRoyal = (rigging) => {
 
   const build = () => {
-    el(undefined, 'display', 'playerDetails').div(`Player: `)
+    el(undefined, 'display', 'playerDetails').div('Player: ')
     el(undefined, 'display', 'characterDetails').div(`Character: `)
     el(undefined, 'display', 'containers').div()
     el(undefined, 'display', 'respond').div()
@@ -15,6 +15,10 @@ const stageRoyal = (rigging) => {
     el('playerForm', 'buttonClass', 'playerNameOKButton' ).button( 'OK', eventAction)
   }
 
+  const updatePlayer = () => {
+    document.getElementById('playerDetails').innerHTML = `Player: ${rigging().player.name}`
+  }
+
   const clearPlayerInput = () => { el().removeElement('playerForm') }
 
   const inputCharacterName = (eventAction) => {
@@ -25,11 +29,21 @@ const stageRoyal = (rigging) => {
 
   const clearCharacterInput = () => {el().removeElement('charForm') }
 
+  const updateCharacter = () => {
+    document.getElementById('characterDetails').innerHTML = ''
+    el('characterDetails', undefined, 'name').div(`character: ${rigging().character.name}`)
+    el('characterDetails', undefined, 'health').div(`health: ${rigging().character.health}`)
+
+  }
+
+
   return {
     build,
     inputPlayerName,
     clearPlayerInput,
+    updatePlayer,
     inputCharacterName,
-    clearCharacterInput
+    clearCharacterInput,
+    updateCharacter
   }
 }

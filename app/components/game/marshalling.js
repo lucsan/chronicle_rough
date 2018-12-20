@@ -28,7 +28,7 @@ const marshalling = () => {
       if (i.level) cabinet.character.level = i.level
       if (i.location) moved(i.location)
     })
-    if (v.length > 0) {  console.log(...v); save() }
+    if (v.length > 0) { save() }
     return {...cabinet.character}
   }
 

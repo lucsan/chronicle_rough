@@ -12,8 +12,6 @@ const stageHeadless = (rigging) => {
     return newPlayerName
   }
 
-  const clearPlayerInput = () => {}
-
   const characterName = (name) => {
     newCharacterName = name
   }
@@ -22,8 +20,6 @@ const stageHeadless = (rigging) => {
     console.log('Headless char', newCharacterName);
     return newCharacterName
   }
-
-const clearCharacterInput = () => {}
 
   const build = () => {
     console.log('stage made')
@@ -34,8 +30,10 @@ const clearCharacterInput = () => {}
     playerName,
     characterName,
     inputPlayerName,
-    clearPlayerInput,
+    clearPlayerInput: () => {},
+    updatePlayer: () => {},
     inputCharacterName,
-    clearCharacterInput,
+    clearCharacterInput: () => {},
+    updateCharacter: () => {}
   }
 }
