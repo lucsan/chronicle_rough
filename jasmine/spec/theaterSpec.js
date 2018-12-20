@@ -1,13 +1,15 @@
 describe('theater', () => {
 
   let marshall = marshalling()
-  let theater = theaterSpace(stageHeadless(marshall.rigging()))
+  let theater = theaterSpace(marshall, stageHeadless(marshall.rigging()))
   //let theater = theaterSpace(stage)
 
-  it('has a test', () => {
+  it('it can make a stage', () => {
     console.log(marshall);
-    console.log(stage);
+    //console.log(stage);
     console.log(theater);
+
+    theater.buildStage()
 
     expect('').toBe('')
   })

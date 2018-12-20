@@ -49,7 +49,7 @@ describe('marshalling', () => {
   })
 
   it('can create a new player', () => {
-    const p = marshall.newPlayer('Hyronimous Bosch')
+    const p = marshall.player('Hyronimous Bosch')
     expect(marshall.player().name).toEqual('Hyronimous Bosch')
   })
 

@@ -84,16 +84,21 @@ const marshalling = () => {
     return {...cabinet.character}
   }
 
-  const player = () => {
+  const player = (name) => {
+    if (name) {
+      cabinet.player = { name: name }
+      cabinet.chest.player = { name: name }
+      cabinet.rigging.player = { name: name }
+    }
     return {...cabinet.player}
   }
 
-  const newPlayer = (name) => {
-    cabinet.player = { name: name }
-    cabinet.chest.player = { name: name }
-    cabinet.rigging.player = { name: name }
-    return {...cabinet.player}
-  }
+  // const newPlayer = (name) => {
+  //   cabinet.player = { name: name }
+  //   cabinet.chest.player = { name: name }
+  //   cabinet.rigging.player = { name: name }
+  //   return {...cabinet.player}
+  // }
 
   // const location = (...v) => {
   //   v.map( i => {
@@ -106,7 +111,7 @@ const marshalling = () => {
     props,
     sets,
     player,
-    newPlayer,
+    //newPlayer,
     character,
     newCharacter,
     chest,

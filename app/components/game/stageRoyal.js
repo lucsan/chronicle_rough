@@ -1,6 +1,6 @@
 const stageRoyal = (rigging) => {
 
-  const makeDisplays = () => {
+  const build = () => {
     el(undefined, 'display', 'playerDetails').div(`Player: `)
   }
 
@@ -11,7 +11,7 @@ const stageRoyal = (rigging) => {
   }
 
   return {
-    makeDisplays,
+    build,
     inputPlayerName
   }
 }

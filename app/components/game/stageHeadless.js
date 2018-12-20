@@ -11,8 +11,12 @@ const stageHeadless = (rigging) => {
     return newPlayerName
   }
 
+  const build = () => {
+    console.log('stage made')
+  }
+
   return {
-    makeDisplays: () => { console.log('displays made (There are no displays)') },
+    build,
     playerName,
     inputPlayerName
   }

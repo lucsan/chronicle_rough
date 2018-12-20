@@ -2,7 +2,7 @@ describe('player', () => {
 
   let marshall = marshalling()
   let stage = stageHeadless(marshall.rigging())
-  let theater = theaterSpace(stage)
+  let theater = theaterSpace(marshall, stage)
 
 
   it('can make a player', () => {
