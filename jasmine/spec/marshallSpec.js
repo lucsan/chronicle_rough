@@ -4,7 +4,7 @@ describe('marshalling', () => {
   // let stage
   // let theater
 
-  beforeAll(function(){
+  beforeAll(() => {
     marshall = marshalling()
     // stage = stageHeadless(marshall.rigging())
     // theater = theaterSpace(marshall, stage)

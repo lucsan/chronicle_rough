@@ -19,6 +19,6 @@ describe("actions", () => {
     marshall.props(props)
     actions().loadActions(props.twiggle)
     console.log(props);
-    expect('a').toBe('b')
+    expect(typeof props.twiggle.actions.env.pickUp).toBe('function')
   })
 })

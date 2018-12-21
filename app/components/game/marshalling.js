@@ -35,20 +35,22 @@ const marshalling = () => {
   }
 
   const props = (v) => {
+    console.log(v);
     if (Object.keys(cabinet.props).length < 1
-      && Object.keys(v).length > 0) {
-      loadProps(v)
+    && v !== undefined) {
+      propConstructor().build(v)
     }
     return {...cabinet.props}
   }
 
-  const loadProps = (v) => {
-    for( let i in v) {
-      v[i].id = i
-      //actions().loadActions(v[i])
-    }
-    cabinet.props = v
-  }
+  // const loadProps = (v) => {
+  //   for( let i in v) {
+  //     v[i].id = i
+  //     actions().loadActions(v[i])
+  //   }
+  //   console.log(v);
+  //   cabinet.props = v
+  // }
 
   // const loadActions = (prop) => {
   //
