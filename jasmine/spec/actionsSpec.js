@@ -1,6 +1,24 @@
-describe("actions", function() {
+describe("actions", () => {
 
-  it("has a default character", function() {
-    expect(defaults.character.name).toBe('')
+  let marshall
+
+  beforeAll(() => {
+    marshall = marshalling()
+  })
+
+  it('can load default actions', () => {
+    let props = {
+      twiggle: {
+        artist: 'tester',
+        desc: 'a twiggle',
+        locs: ['inv', 'bod'],
+        pickUp: true
+      }
+
+    }
+    marshall.props(props)
+    actions().loadActions(props.twiggle)
+    console.log(props);
+    expect('a').toBe('b')
   })
 })

@@ -1,5 +1,8 @@
 const theaterSpace = (marshall, stage) => {
 
+
+
+
   const inputPlayerName = (eventAction) => {
     return stage.inputPlayerName(eventAction)
   }
@@ -20,6 +23,11 @@ const theaterSpace = (marshall, stage) => {
     stage.updateCharacter()
   }
 
+  const boxesLoaded = () => {
+    stage.updateBoxes()
+  }
+  document.addEventListener('chronicle_boxes_loaded', boxesLoaded)
+  
   return {
     inputPlayerName,
     clearPlayerInput,

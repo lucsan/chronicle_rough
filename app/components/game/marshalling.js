@@ -37,11 +37,23 @@ const marshalling = () => {
   const props = (v) => {
     if (Object.keys(cabinet.props).length < 1
       && Object.keys(v).length > 0) {
-      for( let i in v) { v[i].id = i }
-      cabinet.props = v
+      loadProps(v)
     }
     return {...cabinet.props}
   }
+
+  const loadProps = (v) => {
+    for( let i in v) {
+      v[i].id = i
+      //actions().loadActions(v[i])
+    }
+    cabinet.props = v
+  }
+
+  // const loadActions = (prop) => {
+  //
+  //
+  // }
 
   const sets = (v) => {
     if (Object.keys(cabinet.sets).length < 1
@@ -93,10 +105,21 @@ const marshalling = () => {
     newRig.character = newChar
     newChest.character = newChar
 
+    loadBoxes()
     //character(newChar)
     chest(newChest)
     rigging(newRig)
     return {...cabinet.character}
+  }
+
+  const loadBoxes = () => {
+    let inv = propsByLocation('inv')
+    let bod = propsByLocation('bod')
+    cabinet.boxes.inv = inv
+    cabinet.boxes.bod = bod
+    cabinet.chest.boxes = cabinet.boxes
+    cabinet.rigging.boxes = cabinet.boxes
+    document.dispatchEvent(new Event('chronicle_boxes_loaded'))
   }
 
   const player = (name) => {
@@ -148,6 +171,7 @@ const marshalling = () => {
     chest,
     rigging,
     propsByLocation,
-    setsById
+    setsById,
+    //loadActions
   }
 }

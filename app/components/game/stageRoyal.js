@@ -2,11 +2,14 @@ const stageRoyal = (rigging) => {
 
   const build = () => {
     el(undefined, 'display', 'playerDetails').div('Player: ')
-    el(undefined, 'display', 'characterDetails').div(`Character: `)
+    el(undefined, 'display', 'characterDetails').div('Character: ')
     el(undefined, 'display', 'containers').div()
     el(undefined, 'display', 'respond').div()
     el(undefined, 'display', 'prose').div()
     el(undefined, 'display', 'testArea').div()
+
+    el('containers', 'boxes', 'boxes').div()
+    el('boxes', 'inventory', 'inv').div()
   }
 
   const inputPlayerName = (eventAction) => {
@@ -36,6 +39,11 @@ const stageRoyal = (rigging) => {
 
   }
 
+  const updateBoxes = () => {
+    console.log(rigging().boxes)
+    document.getElementById('inv').innerHTML = 'inv'
+
+  }
 
   return {
     build,
@@ -44,6 +52,7 @@ const stageRoyal = (rigging) => {
     updatePlayer,
     inputCharacterName,
     clearCharacterInput,
-    updateCharacter
+    updateCharacter,
+    updateBoxes
   }
 }

@@ -34,6 +34,7 @@ const stageHeadless = (rigging) => {
     updatePlayer: () => {},
     inputCharacterName,
     clearCharacterInput: () => {},
-    updateCharacter: () => {}
+    updateCharacter: () => {},
+    updateBoxes: () => {}
   }
 }
