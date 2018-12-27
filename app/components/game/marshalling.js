@@ -186,7 +186,14 @@ const marshalling = () => {
 
   const setsById = (id) => {
     for (let s in cabinet.sets) {
-      if (cabinet.sets[s].id === id) { return cabinet.sets[s]}
+      if (cabinet.sets[s].id === id) return cabinet.sets[s]
+    }
+    return false
+  }
+
+  const propsById = (id) => {
+    for (let p in cabinet.props) {
+      if (cabinet.props[p].id === id) return cabinet.props[p]
     }
     return false
   }
@@ -197,10 +204,25 @@ const marshalling = () => {
     // check prop exists in from location
     // remove prop
     // put prop in to location
-    console.log(cabinet);
+    if (!detectPropAtCharLoc(propId)) return // add logging of failure
 
+    console.log('found');
 
   }
+
+  const detectPropAtCharLoc = (propId) => {
+    let loc = cabinet.character.location
+    let place = setsById(loc)
+    if (!place) return false
+    let prop = propsById(propId)
+    if (!prop) return false
+    for (let i in prop.locs) {
+      console.log(prop.locs[i]);
+      if (prop.locs[i] === loc) return true
+    }
+    return false
+  }
+
 
   return {
     cabinet: {...cabinet},

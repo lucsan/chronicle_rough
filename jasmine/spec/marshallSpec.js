@@ -129,10 +129,11 @@ describe('marshalling', () => {
       }
     }
     marshall.props(props)
-    //marshall.sets(sets)
+    marshall.sets(sets)
     //actions(marshall).loadActions(props.twiggle)
     //props.twiggle.actions.env.pickUp('twiggle')
     marshall.loadBoxes()
+    marshall.character({location: 'noPlace'})
     marshall.moveProp('twiggle', 'env', 'bod')
 
     expect('a').toBe('b')
