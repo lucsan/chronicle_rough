@@ -20,7 +20,7 @@ describe('propConstructor', () => {
 
   it('takes a list of plans and returns a list of props', () => {
     const props = propConstructor().build(testPlans())
-    console.log('props', props);
+    //console.log('props', props);
     expect(typeof props.testThing).toBe('object')
   })
 

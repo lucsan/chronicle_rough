@@ -43,12 +43,16 @@ describe('marshalling', () => {
     expect(typeof props.stick.locs[0]).toEqual('string')
   })
 
-  it('can protect props', function(){
-    let props = marshall.props(propPlans)
-    props = marshall.props()
-    props = marshall.props({'name': 'test'})
-    expect(typeof props.stick.locs[0]).toEqual('string')
-  })
+  // it('can protect props', function(){
+  //   let props = marshall.props(propPlans)
+  //   console.log('p1',props);
+  //   props = marshall.props()
+  //   console.log('p2', props);
+  //   props = marshall.props({'name': 'test'})
+  //   console.log('p3', props);
+  //   console.log('stick', props.stick);
+  //   expect(typeof props.stick.locs[0]).toEqual('string')
+  // })
 
   it('can load sets', function() {
     let sets = marshall.sets(setsPlans)
@@ -84,6 +88,7 @@ describe('marshalling', () => {
 
   it('can return props by location', () => {
     marshall.props(propPlans)
+    marshall.sets(setsPlans)
     let p = marshall.propsByLocation('start')
     expect(p[0].id).toBe('stick')
   })
@@ -92,6 +97,45 @@ describe('marshalling', () => {
     marshall.sets(setsPlans)
     let s = marshall.setsById('start')
     expect(s.id).toBe('start')
+  })
+
+  it('can move a prop from one box to another', () => {
+    let props = {
+      default: {
+        desc: 'default',
+        loc: '',
+        locs: []
+      },
+      twiggle: {
+        artist: 'tester',
+        desc: 'a twiggle',
+        locs: ['noPlace'],
+        pickUp: true,
+        actions: {
+          env: {},
+          inv: {},
+          bod: {}
+        }
+      }
+    }
+
+    let sets = {
+      noPlace: {
+        desc: 'test set',
+        exits: [{id: 'start'}],
+        actions: {
+          open: () => {}
+        }
+      }
+    }
+    marshall.props(props)
+    //marshall.sets(sets)
+    //actions(marshall).loadActions(props.twiggle)
+    //props.twiggle.actions.env.pickUp('twiggle')
+    marshall.loadBoxes()
+    marshall.moveProp('twiggle', 'env', 'bod')
+
+    expect('a').toBe('b')
   })
 
   // it('can load loadActions', () => {

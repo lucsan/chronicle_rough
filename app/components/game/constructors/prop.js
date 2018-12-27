@@ -19,7 +19,7 @@ const propConstructor = () => {
   }
 
   const addActionBags = (p) => {
-    if (p.actions === undefined) p.actions = {}
+    //if (p.actions === undefined) p.actions = {}
     bags.map(b => {
       if (p.actions[b] === undefined) p.actions[b] = {}
     })

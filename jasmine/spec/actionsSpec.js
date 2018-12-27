@@ -11,14 +11,22 @@ describe("actions", () => {
       twiggle: {
         artist: 'tester',
         desc: 'a twiggle',
-        locs: ['inv', 'bod'],
-        pickUp: true
+        locs: ['inv', 'env'],
+        pickUp: true,
+        actions: {
+          env: {},
+          inv: {},
+          bod: {}
+        }
       }
 
     }
     marshall.props(props)
-    actions().loadActions(props.twiggle)
-    console.log(props);
+    actions(marshall).loadActions(props.twiggle)
+    // console.log(props);
     expect(typeof props.twiggle.actions.env.pickUp).toBe('function')
+// console.log(props.twiggle.actions.env.pickUp);
+//     props.twiggle.actions.env.pickUp('twiggle')
   })
+
 })

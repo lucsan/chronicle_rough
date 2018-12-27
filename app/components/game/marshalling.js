@@ -35,13 +35,32 @@ const marshalling = () => {
   }
 
   const props = (v) => {
-    console.log(v);
-    if (Object.keys(cabinet.props).length < 1
-    && v !== undefined) {
-      propConstructor().build(v)
-    }
+    if (v === undefined) return {...cabinet.props}
+    cabinet.props = propConstructor().build(v)
     return {...cabinet.props}
   }
+
+  // const props1 = (v) => {
+  //   if (Object.keys(cabinet.props).length < 1
+  //   && v !== undefined) {
+  //     cabinet.props = propConstructor().build(v)
+  //   } else {
+  //     if (v !== undefined) {
+  //       console.log('vvv', v);
+  //       for (let i in v) {
+  //         console.log(i);
+  //       }
+  //     }
+  //   }
+  //   // if (v !== undefined
+  //   // && Object.keys(cabinet.props).length > 0) {
+  //   //   console.log('v', v);
+  //   //   // v.map( i => {
+  //   //   //   cabinet.props[i.name] = v
+  //   //   // })
+  //   // }
+  //   return {...cabinet.props}
+  // }
 
   // const loadProps = (v) => {
   //   for( let i in v) {
@@ -58,16 +77,24 @@ const marshalling = () => {
   // }
 
   const sets = (v) => {
-    if (Object.keys(cabinet.sets).length < 1
-      && Object.keys(v).length > 0) {
-      for( let i in v) { v[i].id = i }
-      cabinet.sets = v
-    }
+    if (Object.keys(v).length === 0) return {...cabinet.sets}
+    for( let i in v) { v[i].id = i }
+    cabinet.sets = v
     return {...cabinet.sets}
   }
 
+  // const sets = (v) => {
+  //   if (Object.keys(cabinet.sets).length < 1
+  //     && Object.keys(v).length > 0) {
+  //     for( let i in v) { v[i].id = i }
+  //     cabinet.sets = v
+  //   }
+  //   return {...cabinet.sets}
+  // }
+
   const moved = (to) => {
     if (to === cabinet.character.location || to == '') return
+    cabinet.moves++
     cabinet.character.location = to
     cabinet.places[to] = setsById(to)
     chest({places: cabinet.places})
@@ -164,6 +191,17 @@ const marshalling = () => {
     return false
   }
 
+  const moveProp = (propId, from, to) => {
+    console.log(`move ${propId} from ${from} to ${to}`);
+    console.log(cabinet.props);
+    // check prop exists in from location
+    // remove prop
+    // put prop in to location
+    console.log(cabinet);
+
+
+  }
+
   return {
     cabinet: {...cabinet},
     props,
@@ -174,6 +212,8 @@ const marshalling = () => {
     rigging,
     propsByLocation,
     setsById,
+    moveProp,
+    loadBoxes
     //loadActions
   }
 }
