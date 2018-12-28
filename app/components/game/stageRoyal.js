@@ -61,6 +61,29 @@ const stageRoyal = (rigging) => {
 
   }
 
+  const characterMoved = () => {
+    document.getElementById('place').innerHTML = ''
+    //console.log('char mov', rigging());
+    let placeId = rigging().character.location
+
+    let place = rigging().places[placeId]
+    console.log('cat at', place);
+    el('place', 'title', 'placeTitle').div(place.title)
+    for (let prop of place.props) {
+      el('place', 'prop', prop.id).div(prop.title)
+      for (let i in prop.actions.env) {
+        el(prop.id, 'action', i).button(i, prop.actions.env[i])
+        console.log(i);
+      }
+      //console.log(prop.actions.env);
+      // for (let i of prop.env.actions) {
+      //   console.log(i);
+      // }
+    }
+
+
+  }
+
   return {
     build,
     inputPlayerName,
@@ -69,6 +92,7 @@ const stageRoyal = (rigging) => {
     inputCharacterName,
     clearCharacterInput,
     updateCharacter,
+    characterMoved,
     updateBoxes
   }
 }

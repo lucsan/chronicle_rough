@@ -23,11 +23,13 @@ const theaterSpace = (marshall, stage) => {
     stage.updateCharacter()
   }
 
-  const boxesLoaded = () => {
-    stage.updateBoxes()
-  }
-  document.addEventListener('chronicle_boxes_loaded', boxesLoaded)
-  
+  // const boxesLoaded = () => {
+  //   stage.updateBoxes()
+  // }
+  document.addEventListener('chronicle_boxes_loaded', () => {stage.updateBoxes()})
+
+  document.addEventListener('chronicle_character_moved', () => {stage.characterMoved()})
+
   return {
     inputPlayerName,
     clearPlayerInput,
@@ -35,6 +37,7 @@ const theaterSpace = (marshall, stage) => {
     inputCharacterName,
     clearCharacterInput,
     updateCharacter,
+    //characterMoved,
     buildStage: () => { stage.build() }
   }
 }

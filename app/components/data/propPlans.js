@@ -12,12 +12,13 @@ const propPlans = {
   },
   stick: {
     desc: 'a nice stick',
-    locs: ['start', 'creepyWoods'],
+    locs: ['clearing', 'creepyWoods'],
     artist: 'lucsan',
+    pickUp: true,
     actions: {
       // TODO synonyms for pick up? remove, get, take.
       env: {
-        pickUp: () => actions().pickUp('stick'),
+        //pickUp: () => actions().pickUp('stick'),
         kick: () => { stage().respond('You kick the nice stick') },
       },
       inv: {
@@ -43,7 +44,7 @@ const propPlans = {
 
   gnome: {
     desc: "a nice gnome",
-    locs: ['start'],
+    locs: ['clearing'],
     actions: {
       env: {
         speak: () => {},

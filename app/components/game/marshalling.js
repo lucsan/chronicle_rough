@@ -61,7 +61,10 @@ const marshalling = () => {
   const sets = (v) => {
     if (v === undefined) return {...cabinet.sets}
     if (Object.keys(v).length === 0) return {...cabinet.sets}
-    for( let i in v) { v[i].id = i }
+    for( let i in v) {
+      v[i].id = i
+      v[i].title = tools().makeTitleFromId(i)
+    }
     cabinet.sets = v
     return {...cabinet.sets}
   }
@@ -72,7 +75,8 @@ const marshalling = () => {
     cabinet.character.location = to
     if (cabinet.places[to] === undefined) addNewPlaceToPlaces(to)
     chest({places: cabinet.places})
-    rigging({location: to})
+    rigging({places: cabinet.places})
+    document.dispatchEvent(new Event('chronicle_character_moved'))
   }
 
   const addNewPlaceToPlaces = (locId) => {

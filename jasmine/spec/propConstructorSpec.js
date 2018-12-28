@@ -1,4 +1,9 @@
 describe('propConstructor', () => {
+  let marshall
+
+  beforeAll(() => {
+    marshall = marshalling()
+  })
 
   afterEach(function(){
 
@@ -19,18 +24,18 @@ describe('propConstructor', () => {
   }
 
   it('takes a list of plans and returns a list of props', () => {
-    const props = propConstructor().build(testPlans())
+    const props = propConstructor(marshall).build(testPlans())
     //console.log('props', props);
     expect(typeof props.testThing).toBe('object')
   })
 
   it('will add an id.', () => {
-    const props = propConstructor().build(testPlans())
+    const props = propConstructor(marshall).build(testPlans())
     expect(props.testThing.id).toBe('testThing')
   })
 
   it('adds default actions bags (env, inv, bod).', () => {
-    const props = propConstructor().build(testPlans())
+    const props = propConstructor(marshall).build(testPlans())
     expect(typeof props.testThing.actions.env).toBe('object')
   })
 
