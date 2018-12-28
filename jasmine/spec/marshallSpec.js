@@ -121,6 +121,10 @@ describe('marshalling', () => {
         actions: {
           open: () => {}
         }
+      },
+      somePlace: {
+        desc: 'a test place',
+        exits: [{id: 'start'}],
       }
     }
     marshall.props(props)
@@ -134,7 +138,12 @@ describe('marshalling', () => {
     expect(cabinet.boxes.bod.props.length).toBe(1)
     marshall.moveProp('twiggle', 'bod', 'inv')
     expect(cabinet.boxes.bod.props.length).toBe(0)
-    expect(cabinet.boxes.inv.props.length).toBe(1)            
+    expect(cabinet.boxes.inv.props.length).toBe(1)
+        marshall.character({location: 'somePlace'})
+    marshall.moveProp('twiggle', 'inv', 'env')
+    expect(cabinet.boxes.bod.props.length).toBe(0)
+    expect(cabinet.boxes.inv.props.length).toBe(0)
+    expect(cabinet.places['somePlace'].props.length).toBe(1)
   })
 
   // it('can load loadActions', () => {

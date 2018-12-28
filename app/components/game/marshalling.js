@@ -156,29 +156,23 @@ const marshalling = () => {
 
   const moveProp = (propId, from, to) => {
     let prop = {}
-    console.log(`move ${propId} from ${from} to ${to}`);
-    //console.log(cabinet.props);
-    //console.log(cabinet);
-    // check prop exists in from location (or box)
-    // remove prop
-    // put prop in to location
-
-    // ie: pickUp
-    //if (from === 'env' && !detectPropAtCharLoc(propId)) return // add logging of failure
-    //console.log('found');
-
+    console.log(`move ${propId} from ${from} to ${to}`)
     if (from === 'env') {
       prop = removePropFromPlace(propId, cabinet.character.location)
     } else {
       prop = removePropFromBox(propId, from)
-      // remove prop from box
     }
 
     if (to === 'env') {
-      // Add to cabinet.places.place.props.prop.loc
+      addPropToPlace(prop, cabinet.character.location)
     } else {
       addPropToBox(prop, to)
     }
+  }
+
+  const addPropToPlace = (prop, placeId) => {
+    if (cabinet.places[placeId].props === undefined) cabinet.places[placeId].props = []
+    cabinet.places[placeId].props.push(prop)
   }
 
   const addPropToBox = (prop, boxType) => {
@@ -208,42 +202,6 @@ const marshalling = () => {
     }
     return false
   }
-
-
-
-  const addPropToLocation = () => {
-
-  }
-
-  // This should affect cabinet.places
-  // const removePropFromLocation = (propId, loc) => {
-  //   let place = cabinet.places[loc]
-  //   if (place === undefined) return // Add to error log
-  //   for (let o of place.props) {
-  //     if (o.id === propId) {
-  //       for (let i in o.locs) {
-  //         if (o.locs[i] === loc) {
-  //           o.locs.splice(i, 1)
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-  // This should feed from cabinet.places
-  // const detectPropAtCharLoc = (propId) => {
-  //   let loc = cabinet.character.location
-  //   let place = setsById(loc)
-  //   if (!place) return false
-  //   let prop = propsPlansById(propId)
-  //   if (!prop) return false
-  //   for (let i in prop.locs) {
-  //     console.log(prop.locs[i]);
-  //     if (prop.locs[i] === loc) return true
-  //   }
-  //   return false
-  // }
-
 
   return {
     cabinet: {...cabinet},
