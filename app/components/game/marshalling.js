@@ -32,6 +32,8 @@ const marshalling = () => {
     return {...cabinet.character}
   }
 
+  const moveCharacter = (to) => { character({location: to}) }
+
   const character = (...v) => {
 
     if (v.length === 1 && typeof v[0] == 'string') {
@@ -69,7 +71,6 @@ const marshalling = () => {
     cabinet.moves++
     cabinet.character.location = to
     if (cabinet.places[to] === undefined) addNewPlaceToPlaces(to)
-
     chest({places: cabinet.places})
     rigging({location: to})
   }
@@ -214,6 +215,7 @@ const marshalling = () => {
     propsPlansByLocation,
     setsPlansById,
     moveProp,
+    moveCharacter,
     loadBoxes
     //loadActions
   }

@@ -1,7 +1,7 @@
 const setsPlans = {
   // place {id name}: Description (with tokens)
   start: {
-    desc: 'nowhere, it exists somewhere at the begining',
+    desc: 'nowhere, your character stands here before being moved to clearing',
     exits: [{ id: 'clearing'}]
   },
   clearing: {
