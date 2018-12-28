@@ -154,6 +154,9 @@ const propPlans = {
   vexedSheep: {
     desc: 'a slightly vexed sheep with fluffy white fleece.',
     locs: ['funkyHills']
+  },
+  oldMonk: {
+    desc: 'a calm old monk called Ren-i quietly pushing his broom.'
   }
 
 }

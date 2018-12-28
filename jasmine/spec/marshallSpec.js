@@ -89,13 +89,13 @@ describe('marshalling', () => {
   it('can return props by location', () => {
     marshall.props(propPlans)
     marshall.sets(setsPlans)
-    let p = marshall.propsByLocation('start')
+    let p = marshall.propsPlansByLocation('start')
     expect(p[0].id).toBe('stick')
   })
 
   it('can return sets by id', () => {
     marshall.sets(setsPlans)
-    let s = marshall.setsById('start')
+    let s = marshall.setsPlansById('start')
     expect(s.id).toBe('start')
   })
 
@@ -135,8 +135,8 @@ describe('marshalling', () => {
     marshall.loadBoxes()
     marshall.character({location: 'noPlace'})
     marshall.moveProp('twiggle', 'env', 'bod')
-
-    expect('a').toBe('b')
+    let cabinet = marshall.cabinet
+    expect(cabinet.boxes.bod.props.length).toBe(1)
   })
 
   // it('can load loadActions', () => {

@@ -6,14 +6,30 @@ const marshalling = () => {
   let cabinet = {
     debug: false,
     moves: 0,
-    sets: {}, // objects from the places file.
-    props: {}, // objects from the things file.
+    sets: {}, // objects from the setsPlans file.
+    props: {}, // objects from the propPlans file.
     chest: {}, // a storage chest to save things in.
     rigging: {}, // all the data needed by a stage.
     character: {},
     player: {},
     places: {}, // Sets which have been visited, and their props
     boxes: {} // inv and bod props
+  }
+
+  const newCharacter = (aName) => {
+    let newChar = {...defaults.character}
+    let newChest = {...defaults.chest}
+    let newRig = {...defaults.rigging}
+    newChar.name = aName
+    cabinet.character = newChar
+    newRig.character = newChar
+    newChest.character = newChar
+
+    loadBoxes()
+    //character(newChar)
+    chest(newChest)
+    rigging(newRig)
+    return {...cabinet.character}
   }
 
   const character = (...v) => {
@@ -40,65 +56,28 @@ const marshalling = () => {
     return {...cabinet.props}
   }
 
-  // const props1 = (v) => {
-  //   if (Object.keys(cabinet.props).length < 1
-  //   && v !== undefined) {
-  //     cabinet.props = propConstructor().build(v)
-  //   } else {
-  //     if (v !== undefined) {
-  //       console.log('vvv', v);
-  //       for (let i in v) {
-  //         console.log(i);
-  //       }
-  //     }
-  //   }
-  //   // if (v !== undefined
-  //   // && Object.keys(cabinet.props).length > 0) {
-  //   //   console.log('v', v);
-  //   //   // v.map( i => {
-  //   //   //   cabinet.props[i.name] = v
-  //   //   // })
-  //   // }
-  //   return {...cabinet.props}
-  // }
-
-  // const loadProps = (v) => {
-  //   for( let i in v) {
-  //     v[i].id = i
-  //     actions().loadActions(v[i])
-  //   }
-  //   console.log(v);
-  //   cabinet.props = v
-  // }
-
-  // const loadActions = (prop) => {
-  //
-  //
-  // }
-
   const sets = (v) => {
+    if (v === undefined) return {...cabinet.sets}
     if (Object.keys(v).length === 0) return {...cabinet.sets}
     for( let i in v) { v[i].id = i }
     cabinet.sets = v
     return {...cabinet.sets}
   }
 
-  // const sets = (v) => {
-  //   if (Object.keys(cabinet.sets).length < 1
-  //     && Object.keys(v).length > 0) {
-  //     for( let i in v) { v[i].id = i }
-  //     cabinet.sets = v
-  //   }
-  //   return {...cabinet.sets}
-  // }
-
   const moved = (to) => {
     if (to === cabinet.character.location || to == '') return
     cabinet.moves++
     cabinet.character.location = to
-    cabinet.places[to] = setsById(to)
+    if (cabinet.places[to] === undefined) addNewPlaceToPlaces(to)
+
     chest({places: cabinet.places})
     rigging({location: to})
+  }
+
+  const addNewPlaceToPlaces = (locId) => {
+    let place = setsPlansById(locId)
+    place.props = propsPlansByLocation(locId)
+    cabinet.places[locId] = place
   }
 
   const chest = (...v) => {
@@ -119,31 +98,9 @@ const marshalling = () => {
     return {...cabinet.rigging}
   }
 
-  const locations = () => {
-    // Creates an array of locations with props.
-    // Not a marshalling ativity
-    return
-  }
-
-  const newCharacter = (aName) => {
-    let newChar = {...defaults.character}
-    let newChest = {...defaults.chest}
-    let newRig = {...defaults.rigging}
-    newChar.name = aName
-    cabinet.character = newChar
-    newRig.character = newChar
-    newChest.character = newChar
-
-    loadBoxes()
-    //character(newChar)
-    chest(newChest)
-    rigging(newRig)
-    return {...cabinet.character}
-  }
-
   const loadBoxes = () => {
-    let inv = propsByLocation('inv')
-    let bod = propsByLocation('bod')
+    let inv = propsPlansByLocation('inv')
+    let bod = propsPlansByLocation('bod')
     cabinet.boxes.inv = inv
     cabinet.boxes.bod = bod
     cabinet.chest.boxes = cabinet.boxes
@@ -158,7 +115,6 @@ const marshalling = () => {
       cabinet.rigging.player = { name: name }
       tools().storeData('player', cabinet.chest.player.name)
     }
-
     return {...cabinet.player}
   }
 
@@ -170,7 +126,7 @@ const marshalling = () => {
 
   }
 
-  const propsByLocation = (location) => {
+  const propsPlansByLocation = (location) => {
     let selected = []
     if (!location) location = cabinet.character.location
     for (let prop in cabinet.props) {
@@ -184,44 +140,101 @@ const marshalling = () => {
     return selected
   }
 
-  const setsById = (id) => {
+  const setsPlansById = (id) => {
     for (let s in cabinet.sets) {
-      if (cabinet.sets[s].id === id) return cabinet.sets[s]
+      if (cabinet.sets[s].id === id) return {...cabinet.sets[s]}
     }
     return false
   }
 
-  const propsById = (id) => {
+  const propsPlansById = (id) => {
     for (let p in cabinet.props) {
-      if (cabinet.props[p].id === id) return cabinet.props[p]
+      if (cabinet.props[p].id === id) return {...cabinet.props[p]}
     }
     return false
   }
 
   const moveProp = (propId, from, to) => {
+    let prop = {}
     console.log(`move ${propId} from ${from} to ${to}`);
-    console.log(cabinet.props);
-    // check prop exists in from location
+    //console.log(cabinet.props);
+    console.log(cabinet);
+    // check prop exists in from location (or box)
     // remove prop
     // put prop in to location
-    if (!detectPropAtCharLoc(propId)) return // add logging of failure
 
-    console.log('found');
+    // ie: pickUp
+    //if (from === 'env' && !detectPropAtCharLoc(propId)) return // add logging of failure
+    //console.log('found');
 
-  }
-
-  const detectPropAtCharLoc = (propId) => {
-    let loc = cabinet.character.location
-    let place = setsById(loc)
-    if (!place) return false
-    let prop = propsById(propId)
-    if (!prop) return false
-    for (let i in prop.locs) {
-      console.log(prop.locs[i]);
-      if (prop.locs[i] === loc) return true
+    if (from === 'env') {
+      prop = removePropFromPlace(propId, cabinet.character.location)
+      console.log(cabinet);
+    } else {
+      // remove prop from box
     }
-    return false
+
+    if (to === 'env') {
+      // Add to cabinet.places.place.props.prop.loc
+    } else {
+      addPropToBox(prop, to)
+    }
   }
+
+  const addPropToBox = (prop, to) => {
+    let box = cabinet.boxes[to]
+    if (box.props === undefined) box.props = []
+    let props = box.props
+    props.push(prop)
+  }
+
+  const removePropFromPlace = (propId, locId) => {
+    let props = cabinet.places[locId].props
+    if (props === undefined) return // log error
+    let prop = {}
+    for (let i in props) {
+      if (props[i].id === propId) {
+        prop = props[i]
+        props.splice(i, 1)
+      }
+    }
+    return prop
+  }
+
+
+
+  const addPropToLocation = () => {
+
+  }
+
+  // This should affect cabinet.places
+  // const removePropFromLocation = (propId, loc) => {
+  //   let place = cabinet.places[loc]
+  //   if (place === undefined) return // Add to error log
+  //   for (let o of place.props) {
+  //     if (o.id === propId) {
+  //       for (let i in o.locs) {
+  //         if (o.locs[i] === loc) {
+  //           o.locs.splice(i, 1)
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // This should feed from cabinet.places
+  // const detectPropAtCharLoc = (propId) => {
+  //   let loc = cabinet.character.location
+  //   let place = setsById(loc)
+  //   if (!place) return false
+  //   let prop = propsPlansById(propId)
+  //   if (!prop) return false
+  //   for (let i in prop.locs) {
+  //     console.log(prop.locs[i]);
+  //     if (prop.locs[i] === loc) return true
+  //   }
+  //   return false
+  // }
 
 
   return {
@@ -232,8 +245,8 @@ const marshalling = () => {
     character,
     chest,
     rigging,
-    propsByLocation,
-    setsById,
+    propsPlansByLocation,
+    setsPlansById,
     moveProp,
     loadBoxes
     //loadActions
