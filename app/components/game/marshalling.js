@@ -158,7 +158,7 @@ const marshalling = () => {
     let prop = {}
     console.log(`move ${propId} from ${from} to ${to}`);
     //console.log(cabinet.props);
-    console.log(cabinet);
+    //console.log(cabinet);
     // check prop exists in from location (or box)
     // remove prop
     // put prop in to location
@@ -169,8 +169,8 @@ const marshalling = () => {
 
     if (from === 'env') {
       prop = removePropFromPlace(propId, cabinet.character.location)
-      console.log(cabinet);
     } else {
+      prop = removePropFromBox(propId, from)
       // remove prop from box
     }
 
@@ -181,24 +181,32 @@ const marshalling = () => {
     }
   }
 
-  const addPropToBox = (prop, to) => {
-    let box = cabinet.boxes[to]
+  const addPropToBox = (prop, boxType) => {
+    let box = cabinet.boxes[boxType]
     if (box.props === undefined) box.props = []
     let props = box.props
     props.push(prop)
   }
 
-  const removePropFromPlace = (propId, locId) => {
-    let props = cabinet.places[locId].props
+  const removePropFromBox = (propId, boxType) => {
+    return spliceProps(cabinet.boxes[boxType].props, propId)
+  }
+
+  const removePropFromPlace = (propId, placeId) => {
+    let props = cabinet.places[placeId].props
     if (props === undefined) return // log error
-    let prop = {}
+    return spliceProps(props, propId)
+  }
+
+  const spliceProps = (props, propId) => {
     for (let i in props) {
       if (props[i].id === propId) {
-        prop = props[i]
+        let prop = props[i]
         props.splice(i, 1)
+        return prop
       }
     }
-    return prop
+    return false
   }
 
 

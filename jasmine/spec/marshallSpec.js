@@ -101,11 +101,6 @@ describe('marshalling', () => {
 
   it('can move a prop from one box to another', () => {
     let props = {
-      default: {
-        desc: 'default',
-        loc: '',
-        locs: []
-      },
       twiggle: {
         artist: 'tester',
         desc: 'a twiggle',
@@ -137,6 +132,9 @@ describe('marshalling', () => {
     marshall.moveProp('twiggle', 'env', 'bod')
     let cabinet = marshall.cabinet
     expect(cabinet.boxes.bod.props.length).toBe(1)
+    marshall.moveProp('twiggle', 'bod', 'inv')
+    expect(cabinet.boxes.bod.props.length).toBe(0)
+    expect(cabinet.boxes.inv.props.length).toBe(1)            
   })
 
   // it('can load loadActions', () => {
