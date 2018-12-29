@@ -14,7 +14,7 @@ function application() {
     console.info('modulesLoaded')
     marshall = marshalling()
     console.info('Marshall created', marshall)
-    marshall.props(propPlans)
+    marshall.props(propsPlans)
     marshall.sets(setsPlans)
     console.info('Loaded sets and props', marshall.sets(), marshall.props())
     let stage = stageRoyal(marshall.rigging)

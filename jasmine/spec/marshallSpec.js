@@ -39,12 +39,12 @@ describe('marshalling', () => {
   })
 
   it('can load props', function() {
-    let props = marshall.props(propPlans)
+    let props = marshall.props(propsPlans)
     expect(typeof props.stick.locs[0]).toEqual('string')
   })
 
   // it('can protect props', function(){
-  //   let props = marshall.props(propPlans)
+  //   let props = marshall.props(propsPlans)
   //   console.log('p1',props);
   //   props = marshall.props()
   //   console.log('p2', props);
@@ -87,7 +87,7 @@ describe('marshalling', () => {
   })
 
   it('can return props by location', () => {
-    marshall.props(propPlans)
+    marshall.props(propsPlans)
     marshall.sets(setsPlans)
     let p = marshall.propsPlansByLocation('clearing')
     expect(p[0].id).toBe('stick')

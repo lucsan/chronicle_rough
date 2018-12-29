@@ -15,7 +15,7 @@ describe('propConstructor', () => {
 
   const testPlans = () => {
     const plans = {
-      default: propPlans['default'],
+      default: propsPlans['default'],
       testThing: {},
       testItem: { actions: { env: { acto: () => {} } } },
       testProp: {}
@@ -24,18 +24,18 @@ describe('propConstructor', () => {
   }
 
   it('takes a list of plans and returns a list of props', () => {
-    const props = propConstructor(marshall).build(testPlans())
+    const props = propConstructor().build(testPlans())
     //console.log('props', props);
     expect(typeof props.testThing).toBe('object')
   })
 
   it('will add an id.', () => {
-    const props = propConstructor(marshall).build(testPlans())
+    const props = propConstructor().build(testPlans())
     expect(props.testThing.id).toBe('testThing')
   })
 
   it('adds default actions bags (env, inv, bod).', () => {
-    const props = propConstructor(marshall).build(testPlans())
+    const props = propConstructor().build(testPlans())
     expect(typeof props.testThing.actions.env).toBe('object')
   })
 

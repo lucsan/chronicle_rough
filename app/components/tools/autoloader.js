@@ -30,12 +30,13 @@ const autoload = () => {
 
   const loadFiles = () => {
     const path = ''
-    s.fl.push(`${path}app/components/game/config.js`)
+    s.fl.push(`${path}app/components/data/config.js`)
     s.fl.push(`${path}app/components/tools/tools.js`)
     s.fl.push(`${path}app/components/tools/save.js`)
     s.fl.push(`${path}app/components/tools/elementBuilder.js`)
-    s.fl.push(`${path}app/components/data/propPlans.js`)
+    s.fl.push(`${path}app/components/data/propsPlans.js`)
     s.fl.push(`${path}app/components/data/setsPlans.js`)
+    s.fl.push(`${path}app/components/game/defaults.js`)
     s.fl.push(`${path}app/components/game/marshalling.js`)
     s.fl.push(`${path}app/components/game/actions.js`)
     s.fl.push(`${path}app/components/game/constructors/prop.js`)

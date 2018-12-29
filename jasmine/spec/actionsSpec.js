@@ -27,7 +27,7 @@ describe("actions", () => {
 
   it('dispatches a pickUp event', () => {
 
-    marshall.props(propPlans)
+    marshall.props(propsPlans)
     marshall.sets(setsPlans)
     document.addEventListener('chronicle_action',
       (e) => {

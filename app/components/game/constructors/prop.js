@@ -1,4 +1,4 @@
-const propConstructor = (marshall) => {
+const propConstructor = () => {
   let template = {}
   const aspects = defaults.propAspects //['actions', 'properties']
   const bags = defaults.actionBags //['env', 'inv', 'bod']
@@ -16,7 +16,7 @@ const propConstructor = (marshall) => {
     prop.title = tools().makeTitleFromId(id)
     addAspects(prop)
     addActionBags(prop)
-    actions().loadActions(prop, marshall)
+    actions().loadActions(prop)
     return prop
   }
 

@@ -7,7 +7,7 @@ const marshalling = () => {
     debug: false,
     moves: 0,
     sets: {}, // objects from the setsPlans file.
-    props: {}, // objects from the propPlans file.
+    props: {}, // objects from the propsPlans file.
     chest: {}, // a storage chest to save things in.
     rigging: {}, // all the data needed by a stage.
     character: {},
@@ -179,6 +179,7 @@ const marshalling = () => {
     } else {
       addPropToBox(prop, to)
     }
+    document.dispatchEvent(new Event('chronicle_propMoved'))
   }
 
   const addPropToPlace = (prop, placeId) => {

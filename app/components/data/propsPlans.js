@@ -1,4 +1,4 @@
-const propPlans = {
+const propsPlans = {
   /* global actions: true */
   /*eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
   default: {
