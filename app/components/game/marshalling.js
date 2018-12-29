@@ -16,6 +16,12 @@ const marshalling = () => {
     boxes: {} // inv and bod props
   }
 
+  document.addEventListener('chronicle_action', () => { (e) => { actionear(e.detail) }})
+
+  const actionear = (d) => {
+    if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
+  }
+
   const newCharacter = (aName) => {
     let newChar = {...defaults.character}
     let newChest = {...defaults.chest}
@@ -192,6 +198,7 @@ const marshalling = () => {
   }
 
   const removePropFromPlace = (propId, placeId) => {
+    console.log(cabinet.places);
     let props = cabinet.places[placeId].props
     if (props === undefined) return // log error
     return spliceProps(props, propId)
@@ -210,6 +217,7 @@ const marshalling = () => {
 
   return {
     cabinet: {...cabinet},
+    cab: () => { return {...cabinet}},
     props,
     sets,
     player,
@@ -221,6 +229,5 @@ const marshalling = () => {
     moveProp,
     moveCharacter,
     loadBoxes
-    //loadActions
   }
 }

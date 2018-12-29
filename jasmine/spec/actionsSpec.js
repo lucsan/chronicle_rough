@@ -1,6 +1,6 @@
 describe("actions", () => {
 
-  let marshall
+  let marshall = {}
 
   beforeAll(() => {
     marshall = marshalling()
@@ -22,11 +22,19 @@ describe("actions", () => {
 
     }
     marshall.props(props)
-    actions(marshall).loadActions(props.twiggle)
-    // console.log(props);
     expect(typeof props.twiggle.actions.env.pickUp).toBe('function')
-// console.log(props.twiggle.actions.env.pickUp);
-//     props.twiggle.actions.env.pickUp('twiggle')
+  })
+
+  it('dispatches a pickUp event', () => {
+
+    marshall.props(propPlans)
+    marshall.sets(setsPlans)
+    document.addEventListener('chronicle_action',
+      (e) => {
+        expect(e.detail.propId).toBe('pid')
+      }
+    )
+    actions().pickUp('pid')
   })
 
 })

@@ -16,7 +16,7 @@ const propConstructor = (marshall) => {
     prop.title = tools().makeTitleFromId(id)
     addAspects(prop)
     addActionBags(prop)
-    actions(marshall).loadActions(prop)
+    actions().loadActions(prop, marshall)
     return prop
   }
 

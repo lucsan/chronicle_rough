@@ -89,7 +89,7 @@ describe('marshalling', () => {
   it('can return props by location', () => {
     marshall.props(propPlans)
     marshall.sets(setsPlans)
-    let p = marshall.propsPlansByLocation('start')
+    let p = marshall.propsPlansByLocation('clearing')
     expect(p[0].id).toBe('stick')
   })
 

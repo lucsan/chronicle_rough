@@ -39,6 +39,17 @@ function application() {
     console.log('character', marshall.character());
 
     marshall.character({location: 'clearing'})
+    test()
+  }
+
+  const test = () => {
+
+    document.addEventListener('chronicle_action',
+      (e) => {
+        console.log(e.detail);
+        //expect(e.detail.id).toBe('pid')
+      }
+    )
   }
 
   return {
