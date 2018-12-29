@@ -16,7 +16,13 @@ const marshalling = () => {
     boxes: {} // inv and bod props
   }
 
-  document.addEventListener('chronicle_action', () => { (e) => { actionear(e.detail) }})
+  //document.addEventListener('chronicle_action', () => { console.log('ev');  (e) => { actionear(e.detail) }})
+  document.addEventListener(
+    'chronicle_action',
+    (e) => { actionear(e.detail)  }
+  )
+
+
 
   const actionear = (d) => {
     if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
@@ -179,7 +185,10 @@ const marshalling = () => {
     } else {
       addPropToBox(prop, to)
     }
-    document.dispatchEvent(new Event('chronicle_propMoved'))
+    console.log('cabo', cabinet.boxes);
+    rigging({boxes: cabinet.boxes})
+    document.dispatchEvent(new Event('chronicle_prop_moved'))
+    document.dispatchEvent(new CustomEvent('chronicle_response', {detail: {msg: `you moved ${prop.id}`}}))
   }
 
   const addPropToPlace = (prop, placeId) => {
@@ -189,13 +198,11 @@ const marshalling = () => {
 
   const addPropToBox = (prop, boxType) => {
     let box = cabinet.boxes[boxType]
-    if (box.props === undefined) box.props = []
-    let props = box.props
-    props.push(prop)
+    box.push(prop)
   }
 
   const removePropFromBox = (propId, boxType) => {
-    return spliceProps(cabinet.boxes[boxType].props, propId)
+    return spliceProps(cabinet.boxes[boxType], propId)
   }
 
   const removePropFromPlace = (propId, placeId) => {

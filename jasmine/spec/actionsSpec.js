@@ -25,16 +25,16 @@ describe("actions", () => {
     expect(typeof props.twiggle.actions.env.pickUp).toBe('function')
   })
 
-  it('dispatches a pickUp event', () => {
-
-    marshall.props(propsPlans)
-    marshall.sets(setsPlans)
-    document.addEventListener('chronicle_action',
-      (e) => {
-        expect(e.detail.propId).toBe('pid')
-      }
-    )
-    actions().pickUp('pid')
-  })
+  // it('dispatches a pickUp event', () => {
+  //
+  //   marshall.props(propsPlans)
+  //   marshall.sets(setsPlans)
+  //   document.addEventListener('chronicle_action',
+  //     (e) => {
+  //       expect(e.detail.propId).toBe('pid')
+  //     }
+  //   )
+  //   actions().pickUp('pid')
+  // })
 
 })

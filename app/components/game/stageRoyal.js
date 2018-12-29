@@ -39,49 +39,43 @@ const stageRoyal = (rigging) => {
     document.getElementById('characterDetails').innerHTML = ''
     el('characterDetails', undefined, 'name').div(`character: ${rigging().character.name}`)
     el('characterDetails', undefined, 'health').div(`health: ${rigging().character.health}`)
-
   }
 
   const updateBoxes = () => {
-
     let boxes = rigging().boxes
-    console.log('staged boxes', boxes)
+    console.log(rigging());
     for (let boxId in boxes) {
       document.getElementById(boxId).innerHTML = ''
+      el(boxId, 'title', 'title').div(boxId)
       for (let prop of boxes[boxId]) {
         el(boxId, undefined, prop.id).div(prop.title)
-        console.log(prop);
-
       }
-      console.log(boxId, boxes[boxId]);
-      //
     }
-
-    //document.getElementById('inv').innerHTML = 'inv'
-
+    console.log('boxes', boxes);
   }
 
   const characterMoved = () => {
-    document.getElementById('place').innerHTML = ''
-    //console.log('char mov', rigging());
-    let placeId = rigging().character.location
+    movedPlace()
+  }
 
+  const movedPlace = () => {
+    document.getElementById('place').innerHTML = ''
+    let placeId = rigging().character.location
     let place = rigging().places[placeId]
-    console.log('cat at', place);
     el('place', 'title', 'placeTitle').div(place.title)
     for (let prop of place.props) {
       el('place', 'prop', prop.id).div(prop.title)
       for (let i in prop.actions.env) {
         el(prop.id, 'action', i).button(i, prop.actions.env[i])
-        console.log(i);
       }
-      //console.log(prop.actions.env);
-      // for (let i of prop.env.actions) {
-      //   console.log(i);
-      // }
     }
+  }
 
+  const respond = (msg) => { document.getElementById('respond').innerHTML = msg }
 
+  const propMoved = () => {
+    movedPlace()
+    updateBoxes()
   }
 
   return {
@@ -93,6 +87,8 @@ const stageRoyal = (rigging) => {
     clearCharacterInput,
     updateCharacter,
     characterMoved,
-    updateBoxes
+    propMoved,
+    updateBoxes,
+    respond
   }
 }

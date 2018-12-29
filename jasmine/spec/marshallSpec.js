@@ -135,14 +135,15 @@ describe('marshalling', () => {
     marshall.character({location: 'noPlace'})
     marshall.moveProp('twiggle', 'env', 'bod')
     let cabinet = marshall.cabinet
-    expect(cabinet.boxes.bod.props.length).toBe(1)
+    console.log('cabinet', cabinet.boxes);
+    expect(cabinet.boxes.bod.length).toBe(1)
     marshall.moveProp('twiggle', 'bod', 'inv')
-    expect(cabinet.boxes.bod.props.length).toBe(0)
-    expect(cabinet.boxes.inv.props.length).toBe(1)
-        marshall.character({location: 'somePlace'})
+    expect(cabinet.boxes.bod.length).toBe(0)
+    expect(cabinet.boxes.inv.length).toBe(1)
+    marshall.character({location: 'somePlace'})
     marshall.moveProp('twiggle', 'inv', 'env')
-    expect(cabinet.boxes.bod.props.length).toBe(0)
-    expect(cabinet.boxes.inv.props.length).toBe(0)
+    expect(cabinet.boxes.bod.length).toBe(0)
+    expect(cabinet.boxes.inv.length).toBe(0)
     expect(cabinet.places['somePlace'].props.length).toBe(1)
   })
 

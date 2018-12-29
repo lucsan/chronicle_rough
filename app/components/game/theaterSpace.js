@@ -28,12 +28,17 @@ const theaterSpace = (marshall, stage) => {
   // }
 
   const updateProps = () => {
-    
+
   }
 
   document.addEventListener('chronicle_boxes_loaded', () => {stage.updateBoxes()})
 
   document.addEventListener('chronicle_character_moved', () => {stage.characterMoved()})
+
+  document.addEventListener('chronicle_prop_moved', () => { stage.propMoved() })
+
+  document.addEventListener('chronicle_response', (e) => { stage.respond(e.detail.msg) })
+
 
   return {
     inputPlayerName,

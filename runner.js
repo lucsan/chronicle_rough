@@ -39,7 +39,7 @@ function application() {
     console.log('character', marshall.character());
 
     marshall.character({location: 'clearing'})
-    test()
+    //test()
   }
 
   const test = () => {

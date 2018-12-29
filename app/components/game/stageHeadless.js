@@ -36,6 +36,8 @@ const stageHeadless = (rigging) => {
     clearCharacterInput: () => {},
     updateCharacter: () => {},
     characterMoved: () => {},
-    updateBoxes: () => {}
+    propMoved: () => {},
+    updateBoxes: () => {},
+    respond: (msg) => { console.log(`respond - ${msg}`) }
   }
 }
