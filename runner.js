@@ -28,7 +28,7 @@ function application() {
   }
 
   const playerLoaded = () => {
-    console.log('player', marshall.player());
+    //console.info('player', marshall.player());
     character(marshall, theater).name()
     // Auto name and fire character
     document.getElementById('charName').value = 'Charac Tername'
@@ -36,11 +36,11 @@ function application() {
   }
 
   const characterLoaded = () => {
-    console.log('character', marshall.character());
+    //console.info('character', marshall.character());
 
     marshall.character({location: 'clearing'})
     document.getElementById('pickUp-stick').click()
-    //document.getElementById('drop-stick').click()
+    document.getElementById('drop-stick').click()
     //test()
   }
 

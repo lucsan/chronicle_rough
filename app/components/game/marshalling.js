@@ -77,6 +77,7 @@ const marshalling = () => {
     for( let i in v) {
       v[i].id = i
       v[i].title = tools().makeTitleFromId(i)
+      v[i].exitAction = (to) => { character({location: to}) }
     }
     cabinet.sets = v
     return {...cabinet.sets}
@@ -186,7 +187,6 @@ const marshalling = () => {
     } else {
       addPropToBox(prop, to)
     }
-    //console.log('cabo', cabinet.boxes, cabinet.places);
     rigging({
       boxes: cabinet.boxes,
       places: cabinet.places
@@ -210,7 +210,6 @@ const marshalling = () => {
   }
 
   const removePropFromPlace = (propId, placeId) => {
-    //console.log(cabinet.places);
     let props = cabinet.places[placeId].props
     if (props === undefined) return // log error
     return spliceProps(props, propId)

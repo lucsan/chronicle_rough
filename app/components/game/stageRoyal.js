@@ -42,20 +42,42 @@ const stageRoyal = (rigging) => {
   }
 
   const characterMoved = () => {
+    let placeId = rigging().character.location
+    let place = rigging().places[placeId]
+    document.getElementById('place').innerHTML = ''
+    el('place', 'title').div(place.title)
+    el('place', 'desc', 'placeDesc').div(place.desc)
+    el('place', 'environ', 'env').div()
+    el('place', 'exits', 'exits').div()
+    el('exits', 'title').div('Exits')
+    doExits(place.exits, place.exitAction)
     movedPlace()
   }
 
+  const doExits = (exits, exitAction) => {
+    for (let e of exits) {
+      el('exits', 'exit', e.to).div()
+      el(e.to, 'exit').button(e.desc, () => {exitAction(e.to)})
+    }
+  }
+
   const movedPlace = () => {
-    document.getElementById('place').innerHTML = ''
-    el('place', 'env', 'env').div()
     let placeId = rigging().character.location
     let place = rigging().places[placeId]
-    doBox('env',  place.title, place.props)
+    doBox('env', place.title, place.props)
+  }
+
+  const updatePlaceBox = () => {
+    let placeId = rigging().character.location
+    let place = rigging().places[placeId]
+    document.getElementById('env').innerHTML = ''
+    //el('place', 'env', 'env').div()
+    doBox('env', place.title, place.props)
   }
 
   const updateBoxes = () => {
-    document.getElementById('boxes').innerHTML = ''
     let boxes = rigging().boxes
+    document.getElementById('boxes').innerHTML = ''
     for (let boxId in boxes) { // each box (inv, bod, hand, head etc)
       el('boxes', boxId, boxId).div()
       let title = boxId
@@ -65,8 +87,7 @@ const stageRoyal = (rigging) => {
   }
 
   const doBox = (boxId, title, propsInBox) => {
-    //document.getElementById(boxId).innerHTML = ''
-    el(boxId, 'title').div(title)
+    if (boxId !== 'env') { el(boxId, 'title').div(title) }
     doProps(boxId, propsInBox)
   }
 
@@ -90,7 +111,8 @@ const stageRoyal = (rigging) => {
 
   const propMoved = () => {
     updateBoxes()
-    movedPlace()
+    updatePlaceBox()
+    //movedPlace()
   }
 
   return {

@@ -43,17 +43,6 @@ describe('marshalling', () => {
     expect(typeof props.stick.locs[0]).toEqual('string')
   })
 
-  // it('can protect props', function(){
-  //   let props = marshall.props(propsPlans)
-  //   console.log('p1',props);
-  //   props = marshall.props()
-  //   console.log('p2', props);
-  //   props = marshall.props({'name': 'test'})
-  //   console.log('p3', props);
-  //   console.log('stick', props.stick);
-  //   expect(typeof props.stick.locs[0]).toEqual('string')
-  // })
-
   it('can load sets', function() {
     let sets = marshall.sets(setsPlans)
     expect(sets.start.exits.length > 0).toEqual(true)
@@ -135,7 +124,7 @@ describe('marshalling', () => {
     marshall.character({location: 'noPlace'})
     marshall.moveProp('twiggle', 'env', 'bod')
     let cabinet = marshall.cabinet
-    console.log('cabinet', cabinet.boxes);
+    console.info('cabinet', cabinet.boxes);
     expect(cabinet.boxes.bod.length).toBe(1)
     marshall.moveProp('twiggle', 'bod', 'inv')
     expect(cabinet.boxes.bod.length).toBe(0)

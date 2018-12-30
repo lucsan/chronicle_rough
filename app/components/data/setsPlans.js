@@ -10,12 +10,10 @@ const setsPlans = {
     author: 'lucsan',
     exits: [
       {
-        id: 'north',
         desc: 'a path runs northwards to the Creepy Woods',
         to: 'creepyWoods',
       },
       {
-        id: 'South',
         desc: 'to the south, a small wooden mysterious door in a tree',
         to: 'tree',
         actions: {
@@ -35,12 +33,10 @@ const setsPlans = {
     desc: 'some nice creepy woods',
     exits: [
       {
-        id: 'start',
         desc: 'a path runs south through the woods',
-        to: 'start',
+        to: 'clearing',
       },
       {
-        id: 'funkyHills',
         desc: 'sunshine covered meadows lie in the distance',
         to: 'funkyHills'
       }
@@ -51,9 +47,8 @@ const setsPlans = {
     proseScript: 'lab',
     exits: [
       {
-        id: 'start',
         desc: 'the door to the clearing',
-        to: 'start',
+        to: 'clearing',
       }
     ]
   },
@@ -61,7 +56,6 @@ const setsPlans = {
     desc: 'low grassy hills undulate across a shallow plain, sheep gamble in the pastures and meadows, a windmill gently turns in the distance',
     exits: [
       {
-        id: 'creepyWoods',
         desc: 'The creepy woods becon with twisted twig',
         to: 'creepyWoods'
       }

@@ -9,11 +9,10 @@ const player = (marshall, theater) => {
     let p = document.getElementById('playerName')
     marshall.player(p.value)
     document.dispatchEvent(new Event('chronicle_player_loaded'))
-    //console.log(p.value);
   }
 
   const loaded = () => {
-    console.log('player loaded');
+    console.info('player loaded');
     theater.clearPlayerInput()
     theater.updatePlayer()
   }
