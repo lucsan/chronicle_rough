@@ -41,35 +41,49 @@ const stageRoyal = (rigging) => {
     el('characterDetails', undefined, 'health').div(`health: ${rigging().character.health}`)
   }
 
-  const updateBoxes = () => {
-    let boxes = rigging().boxes
-    console.log(rigging());
-    for (let boxId in boxes) {
-      document.getElementById(boxId).innerHTML = ''
-      el(boxId, 'title', 'title').div(boxId)
-      for (let prop of boxes[boxId]) {
-        el(boxId, undefined, prop.id).div(prop.title)
-      }
-    }
-    console.log('boxes', boxes);
-  }
-
   const characterMoved = () => {
     movedPlace()
   }
 
   const movedPlace = () => {
     document.getElementById('place').innerHTML = ''
+    el('place', 'env', 'env').div()
     let placeId = rigging().character.location
     let place = rigging().places[placeId]
-    el('place', 'title', 'placeTitle').div(place.title)
-    for (let prop of place.props) {
-      el('place', 'prop', prop.id).div(prop.title)
-      for (let i in prop.actions.env) {
-        el(prop.id, 'action', i).button(i, prop.actions.env[i])
-      }
+    doBox('env',  place.title, place.props)
+  }
+
+  const updateBoxes = () => {
+    document.getElementById('boxes').innerHTML = ''
+    let boxes = rigging().boxes
+    for (let boxId in boxes) { // each box (inv, bod, hand, head etc)
+      el('boxes', boxId, boxId).div()
+      let title = boxId
+      if (title === 'inv') title = 'Backpack'
+      doBox(boxId, title, boxes[boxId])
     }
   }
+
+  const doBox = (boxId, title, propsInBox) => {
+    el(boxId, 'title').div(title)
+    doProps(boxId, propsInBox)
+  }
+
+  const doProps = (boxId, propsInBox) => {
+    for (let prop of propsInBox) {
+      el(boxId, undefined, prop.id).div()
+      el(prop.id, 'propTitle').div(prop.title)
+      doActions(prop, boxId)
+    }
+  }
+
+  const doActions = (prop, boxId) => {
+    let acts = prop.actions[boxId]
+    for (let i in acts) {
+      el(prop.id, 'action', `${i}-${prop.id}`).button(i, acts[i])
+    }
+  }
+
 
   const respond = (msg) => { document.getElementById('respond').innerHTML = msg }
 

@@ -15,19 +15,24 @@ const actions = () => {
     prop.actions.env.pickUp = () => pickUp(prop.id)//(id) => marshall.moveProp(id, 'env', 'bod')
   }
 
-  const pickUp = (propId) => {
-    let detail = {
-      actionId: 'pickUp',
-      propId: propId,
-      from: 'env',
-      to: 'bod'
-    }
+  // pickUp - move from env to bod
+  const pickUp = (propId) => { dispatch(prepDetail('pickUp', propId, 'env', 'bod')) }
+
+  // drop - move from bod to env
+  const drop = (propId) => { dispatch(prepDetail('drop', propId, 'bod', 'env')) }
+
+
+  const dispatch = (detail) => {
     document.dispatchEvent(
       new CustomEvent(
         'chronicle_action',
         {detail: detail}
       )
     )
+  }
+
+  const prepDetail = (actionId, propId,from, to) => {
+    return {actionId: actionId, propId: propId, from: from, to: to}
   }
 
   return {

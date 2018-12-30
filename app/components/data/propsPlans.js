@@ -105,6 +105,11 @@ const propsPlans = {
   badge: {
     desc: "A little copper button badge, it says `Adventurer #1`.",
     locs: ['bod'],
+    actions: {
+      bod: {
+        rub: () => {}
+      }
+    },
   },
 
   littleMonster: {
