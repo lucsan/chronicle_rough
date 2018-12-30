@@ -39,7 +39,8 @@ function application() {
     console.log('character', marshall.character());
 
     marshall.character({location: 'clearing'})
-    //document.getElementById('pickUp-stick').click()
+    document.getElementById('pickUp-stick').click()
+    //document.getElementById('drop-stick').click()
     //test()
   }
 

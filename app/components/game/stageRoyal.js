@@ -65,12 +65,14 @@ const stageRoyal = (rigging) => {
   }
 
   const doBox = (boxId, title, propsInBox) => {
+    //document.getElementById(boxId).innerHTML = ''
     el(boxId, 'title').div(title)
     doProps(boxId, propsInBox)
   }
 
   const doProps = (boxId, propsInBox) => {
     for (let prop of propsInBox) {
+      //document.getElementById(prop.id).innerHTML = ''
       el(boxId, undefined, prop.id).div()
       el(prop.id, 'propTitle').div(prop.title)
       doActions(prop, boxId)
@@ -84,12 +86,11 @@ const stageRoyal = (rigging) => {
     }
   }
 
-
   const respond = (msg) => { document.getElementById('respond').innerHTML = msg }
 
   const propMoved = () => {
-    movedPlace()
     updateBoxes()
+    movedPlace()
   }
 
   return {

@@ -26,6 +26,7 @@ const marshalling = () => {
 
   const actionear = (d) => {
     if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
+    if (d.actionId === 'drop') moveProp(d.propId, d.from, d.to)
   }
 
   const newCharacter = (aName) => {
@@ -185,8 +186,11 @@ const marshalling = () => {
     } else {
       addPropToBox(prop, to)
     }
-    console.log('cabo', cabinet.boxes);
-    rigging({boxes: cabinet.boxes})
+    //console.log('cabo', cabinet.boxes, cabinet.places);
+    rigging({
+      boxes: cabinet.boxes,
+      places: cabinet.places
+    })
     document.dispatchEvent(new Event('chronicle_prop_moved'))
     document.dispatchEvent(new CustomEvent('chronicle_response', {detail: {msg: `you moved ${prop.id}`}}))
   }
@@ -206,7 +210,7 @@ const marshalling = () => {
   }
 
   const removePropFromPlace = (propId, placeId) => {
-    console.log(cabinet.places);
+    //console.log(cabinet.places);
     let props = cabinet.places[placeId].props
     if (props === undefined) return // log error
     return spliceProps(props, propId)

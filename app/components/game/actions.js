@@ -6,12 +6,16 @@ const actions = () => {
     // if (prop.actions.inv == undefined) prop.actions.inv = {}
     // if (prop.actions.bod == undefined) prop.actions.bod = {}
 
+    if (prop.actions.bod.drop == undefined) loadDrop(prop)
     if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
+  }
+
+  const loadDrop = (prop) => {
+    prop.actions.bod.drop = () => drop(prop.id)
   }
 
   const loadPickUp = (prop) => {
     if (!prop.pickUp) return
-    let id = prop.id
     prop.actions.env.pickUp = () => pickUp(prop.id)//(id) => marshall.moveProp(id, 'env', 'bod')
   }
 
