@@ -57,10 +57,10 @@ const propsPlans = {
     locs: ['inv'],
     actions: {
       inv: {
-        inspect: () => { stage().respond(`Its lint, like you get from your pocket.`) },
-      },
+        },
       bod: {
-        sniff: () => { stage().respond(`You sniff your lint, it smells vaugly of dust, and pocket.`) },
+        inspect: () => { actions().msg(`its lint, like you get from your pocket.`) },
+        sniff: () => { actions().msg(`You sniff your lint, it smells vaugly of dust, and pocket.`) },
         throw: () => { actions().drop('lint') },
       },
     },

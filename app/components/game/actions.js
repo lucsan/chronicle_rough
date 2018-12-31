@@ -1,15 +1,19 @@
 const actions = () => {
 
   const loadActions = (prop) => {
-    // if (prop.actions == undefined) { prop.actions = {} }
-    // if (prop.actions.env == undefined) prop.actions.env = {}
-    // if (prop.actions.inv == undefined) prop.actions.inv = {}
-    // if (prop.actions.bod == undefined) prop.actions.bod = {}
 
-    if (prop.actions.bod.drop == undefined) loadDrop(prop)
+    loadBods(prop)
     if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
-    if (prop.actions.bod.bagit == undefined) prop.actions.bod.bagit = () => bagit(prop.id)
     if (prop.actions.inv.grabit == undefined) prop.actions.inv.grabit = () => grabit(prop.id)
+
+  }
+
+  const loadBods = (prop) => {
+    if (prop.actions.bod.drop == undefined) loadDrop(prop)
+    if (prop.actions.bod.bagit == undefined) prop.actions.bod.bagit = () => bagit(prop.id)
+    if (prop.actions.bod.inspect == undefined) prop.actions.bod.inspect = () => inspect(prop)
+
+
   }
 
   const loadDrop = (prop) => { prop.actions.bod.drop = () => drop(prop.id) }
@@ -26,6 +30,17 @@ const actions = () => {
   const bagit = (propId) => {dispatch(prepDetail('bagit', propId, 'bod', 'inv'))}
 
   const grabit = (propId) => {dispatch(prepDetail('grabit', propId, 'inv', 'bod'))}
+
+  const inspect = (prop) => { msg(prop.desc) }
+
+  const msg = (msg) => {
+    document.dispatchEvent(
+      new CustomEvent(
+        'chronicle_response',
+        {detail: {msg: msg}}
+      )
+    )
+  }
 
   // ---- custom actions ----
   const kick = (propId) => {
@@ -51,6 +66,7 @@ const actions = () => {
 
   return {
     loadActions,
-    kick
+    kick,
+    msg
   }
 }
