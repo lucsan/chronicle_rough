@@ -25,8 +25,9 @@ const marshalling = () => {
 
 
   const actionear = (d) => {
-    if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
-    if (d.actionId === 'drop') moveProp(d.propId, d.from, d.to)
+    //if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
+    //if (d.actionId === 'drop') moveProp(d.propId, d.from, d.to)
+    moveProp(d.propId, d.from, d.to)
   }
 
   const newCharacter = (aName) => {

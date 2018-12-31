@@ -8,23 +8,24 @@ const actions = () => {
 
     if (prop.actions.bod.drop == undefined) loadDrop(prop)
     if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
+    if (prop.actions.bod.bagit == undefined) prop.actions.bod.bagit = () => bagit(prop.id)
+    if (prop.actions.inv.grabit == undefined) prop.actions.inv.grabit = () => grabit(prop.id)
   }
 
-  const loadDrop = (prop) => {
-    prop.actions.bod.drop = () => drop(prop.id)
-  }
+  const loadDrop = (prop) => { prop.actions.bod.drop = () => drop(prop.id) }
 
   const loadPickUp = (prop) => {
     if (!prop.pickUp) return
     prop.actions.env.pickUp = () => pickUp(prop.id)//(id) => marshall.moveProp(id, 'env', 'bod')
   }
 
-  // pickUp - move from env to bod
   const pickUp = (propId) => { dispatch(prepDetail('pickUp', propId, 'env', 'bod')) }
 
-  // drop - move from bod to env
   const drop = (propId) => { dispatch(prepDetail('drop', propId, 'bod', 'env')) }
 
+  const bagit = (propId) => {dispatch(prepDetail('bagit', propId, 'bod', 'inv'))}
+
+  const grabit = (propId) => {dispatch(prepDetail('grabit', propId, 'inv', 'bod'))}
 
   // ---- custom actions ----
   const kick = (propId) => {
