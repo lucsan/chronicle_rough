@@ -13,7 +13,6 @@ const actions = () => {
     if (prop.actions.bod.bagit == undefined) prop.actions.bod.bagit = () => bagit(prop.id)
     if (prop.actions.bod.inspect == undefined) prop.actions.bod.inspect = () => inspect(prop)
 
-
   }
 
   const loadDrop = (prop) => { prop.actions.bod.drop = () => drop(prop.id) }

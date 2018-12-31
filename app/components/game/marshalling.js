@@ -40,9 +40,10 @@ const marshalling = () => {
     newChest.character = newChar
 
     loadBoxes()
-    //character(newChar)
     chest(newChest)
     rigging(newRig)
+    cabinet.rigging.exitAction = (to) => { character({location: to}) }
+
     return {...cabinet.character}
   }
 
@@ -78,7 +79,6 @@ const marshalling = () => {
     for( let i in v) {
       v[i].id = i
       v[i].title = tools().makeTitleFromId(i)
-      v[i].exitAction = (to) => { character({location: to}) }
     }
     cabinet.sets = v
     return {...cabinet.sets}

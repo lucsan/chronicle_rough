@@ -42,7 +42,7 @@ const stageRoyal = (rigging) => {
   }
 
   const characterMoved = () => {
-    console.log('cm');
+    console.log('cm', rigging());
     let placeId = rigging().character.location
     let place = rigging().places[placeId]
     document.getElementById('place').innerHTML = ''
@@ -55,7 +55,7 @@ const stageRoyal = (rigging) => {
     el('place', 'environ', 'env').div()
     el('place', 'exits', 'exits').div()
     el('exits', 'title').div('Exits')
-    doExits(place.exits, place.exitAction)
+    doExits(place.exits, rigging().exitAction)
     movedPlace()
   }
 
@@ -101,6 +101,7 @@ const stageRoyal = (rigging) => {
       //document.getElementById(prop.id).innerHTML = ''
       el(boxId, undefined, prop.id).div()
       el(prop.id, 'propTitle').div(prop.title)
+      doCombos(prop, boxId)
       doActions(prop, boxId)
     }
   }
@@ -109,6 +110,14 @@ const stageRoyal = (rigging) => {
     let acts = prop.actions[boxId]
     for (let i in acts) {
       el(prop.id, 'action', `${i}-${prop.id}`).button(i, acts[i])
+    }
+  }
+
+  const doCombos = (prop, boxId) => {
+    if (prop.usedIn.length > 0) {
+      prop.usedIn.map( (i) => {
+        el(prop.id, 'combine').button(`used in making ${i}`)
+      })
     }
   }
 
