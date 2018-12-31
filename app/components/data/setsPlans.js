@@ -10,11 +10,11 @@ const setsPlans = {
     author: 'lucsan',
     exits: [
       {
-        desc: 'a path runs northwards to the Creepy Woods',
+        desc: 'a path leads to the Creepy Woods',
         to: 'creepyWoods',
       },
       {
-        desc: 'to the south, a small wooden mysterious door in a tree',
+        desc: 'a small wooden mysterious door in a tree',
         to: 'tree',
         actions: {
           'open': () => {},
@@ -33,7 +33,7 @@ const setsPlans = {
     desc: 'some nice creepy woods',
     exits: [
       {
-        desc: 'a path runs south through the woods',
+        desc: 'a Clearing can be seen through the trees',
         to: 'clearing',
       },
       {
@@ -47,7 +47,7 @@ const setsPlans = {
     proseScript: 'lab',
     exits: [
       {
-        desc: 'the door to the clearing',
+        desc: 'the door to the Clearing',
         to: 'clearing',
       }
     ]
