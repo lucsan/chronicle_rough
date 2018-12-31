@@ -86,11 +86,13 @@ const marshalling = () => {
   const moved = (to) => {
     if (to === cabinet.character.location || to == '') return
     cabinet.moves++
+    let from = cabinet.character.location
     cabinet.character.location = to
     if (cabinet.places[to] === undefined) addNewPlaceToPlaces(to)
     chest({places: cabinet.places})
     rigging({places: cabinet.places})
     document.dispatchEvent(new Event('chronicle_character_moved'))
+    document.dispatchEvent(new CustomEvent('chronicle_response', {detail: {msg: `you went from ${from} to ${to}`}}))
   }
 
   const addNewPlaceToPlaces = (locId) => {
@@ -104,6 +106,7 @@ const marshalling = () => {
     if (place.proseScript === undefined || place.prose !== undefined) { return }
     scriptLoader(`app/components/data/places/${place.proseScript}.js`, () => {
       place.prose = eval(`${place.proseScript}_prose`)
+      console.log('sl');
     })
   }
 

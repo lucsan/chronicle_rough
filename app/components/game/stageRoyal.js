@@ -42,11 +42,16 @@ const stageRoyal = (rigging) => {
   }
 
   const characterMoved = () => {
+    console.log('cm');
     let placeId = rigging().character.location
     let place = rigging().places[placeId]
     document.getElementById('place').innerHTML = ''
     el('place', 'title').div(place.title)
     el('place', 'desc', 'placeDesc').div(place.desc)
+    if (place.prose) {
+      pd = el('place', 'prose', 'prose').div().innerHTML = place.prose
+    }
+    if (!place.prose) console.log('no prose');
     el('place', 'environ', 'env').div()
     el('place', 'exits', 'exits').div()
     el('exits', 'title').div('Exits')

@@ -26,6 +26,15 @@ const actions = () => {
   const drop = (propId) => { dispatch(prepDetail('drop', propId, 'bod', 'env')) }
 
 
+  // ---- custom actions ----
+  const kick = (propId) => {
+    document.dispatchEvent(new CustomEvent(
+      'chronicle_response',
+      {detail: {msg: `you kicked ${propId}`}}
+    ))
+  }
+
+
   const dispatch = (detail) => {
     document.dispatchEvent(
       new CustomEvent(
@@ -41,6 +50,6 @@ const actions = () => {
 
   return {
     loadActions,
-    pickUp
+    kick
   }
 }

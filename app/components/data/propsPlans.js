@@ -19,7 +19,7 @@ const propsPlans = {
       // TODO synonyms for pick up? remove, get, take.
       env: {
         //pickUp: () => actions().pickUp('stick'),
-        kick: () => { stage().respond('You kick the nice stick') },
+        kick: () => { actions().kick('stick') },
       },
       inv: {
         // combines
