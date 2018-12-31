@@ -1,3 +1,4 @@
 const config = {
-  eventPrefix: 'chronicle_'
+  eventPrefix: 'chronicle_',
+  charStart: 'begining'
 }

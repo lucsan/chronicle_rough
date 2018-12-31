@@ -1,8 +1,9 @@
 const setsPlans = {
   // place {id name}: Description (with tokens)
-  start: {
-    desc: 'nowhere, your character stands here before being moved to clearing',
-    exits: [{ id: 'clearing'}]
+  begining: {
+    desc: 'A begining. Your character stands poised ready for a new adventure',
+    proseScript: 'begining',
+    exits: [{ to: 'clearing', desc: 'The Adventure begins ...'}]
   },
   clearing: {
     desc: 'a sun dappled clearing',

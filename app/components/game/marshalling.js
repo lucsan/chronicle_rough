@@ -43,6 +43,8 @@ const marshalling = () => {
     chest(newChest)
     rigging(newRig)
     cabinet.rigging.exitAction = (to) => { character({location: to}) }
+    addNewPlaceToPlaces('begining')
+    cabinet.rigging.places = cabinet.places
 
     return {...cabinet.character}
   }
@@ -99,15 +101,15 @@ const marshalling = () => {
   const addNewPlaceToPlaces = (locId) => {
     let place = setsPlansById(locId)
     place.props = propsPlansByLocation(locId)
-    loadProse(place)
     cabinet.places[locId] = place
+    if (place.proseScript === undefined || place.prose !== undefined) { return }
+    loadProse(place)
   }
 
   const loadProse = (place) => {
-    if (place.proseScript === undefined || place.prose !== undefined) { return }
     scriptLoader(`app/components/data/places/${place.proseScript}.js`, () => {
       place.prose = eval(`${place.proseScript}_prose`)
-      console.log('sl');
+      document.dispatchEvent(new Event('chronicle_character_moved'))
     })
   }
 

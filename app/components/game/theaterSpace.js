@@ -31,6 +31,8 @@ const theaterSpace = (marshall, stage) => {
 
   }
 
+  //document.addEventListener('chronicle_character_loaded', () => {stage.characterMoved()})
+
   document.addEventListener('chronicle_boxes_loaded', () => {stage.updateBoxes()})
 
   document.addEventListener('chronicle_character_moved', () => {stage.characterMoved()})

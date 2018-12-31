@@ -3,7 +3,7 @@ const defaults = {
     name: '',
     health: 100,
     level: 1,
-    location: 'start'
+    location: 'begining'
   },
   chest: {
     character: {},
