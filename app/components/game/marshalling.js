@@ -96,7 +96,15 @@ const marshalling = () => {
   const addNewPlaceToPlaces = (locId) => {
     let place = setsPlansById(locId)
     place.props = propsPlansByLocation(locId)
+    loadProse(place)
     cabinet.places[locId] = place
+  }
+
+  const loadProse = (place) => {
+    if (place.proseScript === undefined || place.prose !== undefined) { return }
+    scriptLoader(`app/components/data/places/${place.proseScript}.js`, () => {
+      place.prose = eval(`${place.proseScript}_prose`)
+    })
   }
 
   const chest = (...v) => {

@@ -13,7 +13,7 @@ function application() {
   const modulesLoaded = () => {
     console.info('modulesLoaded')
     marshall = marshalling()
-    console.info('Marshall created', marshall)
+    console.info('Marshall created', marshall.cabinet)
     marshall.props(propsPlans)
     marshall.sets(setsPlans)
     console.info('Loaded sets and props', marshall.sets(), marshall.props())
