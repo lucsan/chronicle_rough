@@ -37,12 +37,14 @@ function application() {
 
   const characterLoaded = () => {
     //console.info('character', marshall.character());
+    document.getElementById('combine-lint').click()
 
     //marshall.character({location: 'start'})
     //marshall.character({location: 'clearing'})
     //marshall.character({location: 'lab'})
     //document.getElementById('pickUp-stick').click()
     //document.getElementById('drop-stick').click()
+
     //test()
   }
 

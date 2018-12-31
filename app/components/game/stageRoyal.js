@@ -116,7 +116,7 @@ const stageRoyal = (rigging) => {
   const doCombos = (prop, boxId) => {
     if (prop.usedIn.length > 0) {
       prop.usedIn.map( (i) => {
-        el(prop.id, 'combine').button(`used in making ${i}`)
+        el(prop.id, 'combine', `combine-${prop.id}`).button(`used in making ${i}`, () => {rigging().comboAction(i)})
       })
     }
   }

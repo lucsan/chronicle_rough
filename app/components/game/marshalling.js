@@ -43,6 +43,7 @@ const marshalling = () => {
     chest(newChest)
     rigging(newRig)
     cabinet.rigging.exitAction = (to) => { character({location: to}) }
+    cabinet.rigging.comboAction = (propId) => { combine(propId) }
     addNewPlaceToPlaces('begining')
     cabinet.rigging.places = cabinet.places
 
@@ -95,7 +96,7 @@ const marshalling = () => {
     chest({places: cabinet.places})
     rigging({places: cabinet.places})
     document.dispatchEvent(new Event('chronicle_character_moved'))
-    document.dispatchEvent(new CustomEvent('chronicle_response', {detail: {msg: `you went from ${from} to ${to}`}}))
+    respond(`you went from ${from} to ${to}`)
   }
 
   const addNewPlaceToPlaces = (locId) => {
@@ -187,6 +188,37 @@ const marshalling = () => {
     return false
   }
 
+  const combine = (propId) => {
+    let props = [...cabinet.boxes.inv, ...cabinet.boxes.bod]
+    let newThing = cabinet.props[propId]
+
+    // See if everything is available
+    let missing = []
+    let match = newThing.combines.needs.map(i => {
+      let prop = props.find(e => { return e.id == i })
+      if (prop === undefined) {
+        missing.push(i)
+      }
+    })
+    // Whoops, something(s) missing
+    if (missing.length > 0) {
+      let txt = 'you are missing '
+      missing.map(i => {
+        prop = propsPlansById(i)
+        txt += `${prop.desc}, `
+      })
+      txt = txt.substr(0, txt.length -2) + '.'
+      respond(txt)
+      return
+    }
+
+    // Combine and destroy
+
+
+
+    console.log(newThing, props, match, missing);
+  }
+
   const moveProp = (propId, from, to) => {
     let prop = {}
     console.log(`move ${propId} from ${from} to ${to}`)
@@ -206,7 +238,7 @@ const marshalling = () => {
       places: cabinet.places
     })
     document.dispatchEvent(new Event('chronicle_prop_moved'))
-    document.dispatchEvent(new CustomEvent('chronicle_response', {detail: {msg: `you moved ${prop.id}`}}))
+    respond(`you moved ${prop.id}`)
   }
 
   const addPropToPlace = (prop, placeId) => {
@@ -238,6 +270,11 @@ const marshalling = () => {
       }
     }
     return false
+  }
+
+  const respond = (msg) => {
+    document.dispatchEvent(
+      new CustomEvent('chronicle_response', {detail: {msg: msg}}))
   }
 
   return {
