@@ -1,5 +1,7 @@
 const begining_prose = `Prologue:
 <p>
+The curtain opens for a new adventure ...
+<p>
 I had already traveled a great distance, by plane, then river boat,
  and most recently in a beaten up old truck which rattled and banged along forest trails.
 <p>

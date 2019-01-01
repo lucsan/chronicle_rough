@@ -18,20 +18,14 @@ const propsPlans = {
     actions: {
       // TODO synonyms for pick up? remove, get, take.
       env: {
-        //pickUp: () => actions().pickUp('stick'),
         kick: () => { actions().kick('stick') },
       },
       inv: {
-        // combines
-        // wear - put in bod
-        //drop: () => {},
-      //  hold: () => { console.log(`put in bod`); },
         destroy: () => {},
       },
       bod: {
         hit: () => {console.log('you hit');},
         poke: () => {console.log(`you poke`);},
-        //bag: () => {console.log(`return to inventory`);}, // put in inv
       },
     },
     properties: {
@@ -42,12 +36,27 @@ const propsPlans = {
     },
   },
 
+  welcomizer: {
+    desc: 'A welcomizer, its here to help',
+    locs: ['begining'],
+    pickUp: true,
+    actions: {
+      env: {
+        ask: () => { actions().msg('Click on pickUp to pick me up') }
+      },
+      bod: {
+        ask: () => { actions().msg('Click on bagit, to put me in the backpack. Click on drop to drop me.') },
+      },
+    },
+  },
+
   gnome: {
     desc: "a nice gnome",
     locs: ['clearing'],
     actions: {
       env: {
-        speak: () => {},
+        speak: () => { actions().msg('ha ha ha, he he he, I\'m a little gnome and you can\'t catch me') },
+        tickle: () => {},
       },
     },
   },
@@ -56,11 +65,9 @@ const propsPlans = {
     desc: "some grey and fluffy lint",
     locs: ['inv'],
     actions: {
-      inv: {
-        },
       bod: {
         inspect: () => { actions().msg(`its lint, like you get from your pocket.`) },
-        sniff: () => { actions().msg(`You sniff your lint, it smells vaugly of dust, and pocket.`) },
+        sniff: () => { actions().msg(`you sniff your lint, it smells vaugly of dust, and pocket.`) },
         throw: () => { actions().drop('lint') },
       },
     },
@@ -103,6 +110,7 @@ const propsPlans = {
   badge: {
     desc: 'A little copper button badge, it says `Adventurer #1`.',
     locs: ['bod'],
+    pickUp: true,
     actions: {
       bod: {
         rub: () => { actions().msg('you give it a little rub and its a tiny bit more shinny') },
@@ -111,7 +119,7 @@ const propsPlans = {
   },
 
   littleMonster: {
-    desc: "Oooh how cute, a little monster",
+    desc: 'Oooh how cute, a little monster',
     locs: ['creepyWoods'],
     actions: {
       env: {

@@ -3,7 +3,7 @@ const setsPlans = {
   begining: {
     desc: 'A begining. Your character stands poised ready for a new adventure',
     proseScript: 'begining',
-    exits: [{ to: 'clearing', desc: 'The Adventure begins ...'}]
+    exits: [{ to: 'clearing', desc: 'Adventure awaits (click here) ...'}]
   },
   clearing: {
     desc: 'a sun dappled clearing',
@@ -14,9 +14,8 @@ const setsPlans = {
         desc: 'a path leads to the Creepy Woods',
         to: 'creepyWoods',
       },
-      {
-        to: 'treeHouse'
-      },
+      { to: 'treeHouse' },
+      { to: 'teaHouse' },
       {
         desc: 'a small mysterious wooden door in a tree',
         to: 'tree',
@@ -26,11 +25,7 @@ const setsPlans = {
           'lock': () => {},
         },
       },
-      {
-        id: 'lab',
-        desc: 'the laboratory entrance',
-        to: 'lab',
-      }
+      {to: 'lab', desc: 'the laboratory entrance'}
     ]
   },
   creepyWoods: {
@@ -53,8 +48,16 @@ const setsPlans = {
       {
         desc: 'the door to the Clearing',
         to: 'clearing',
-      }
+      },
+      { to: 'labShed'}
     ]
+  },
+  labShed: {
+    desc: 'a shed round the back of the laboratory',
+    exits: [
+      { to: 'lab' },
+      { to: 'clearing' }
+    ],
   },
   funkyHills: {
     desc: 'low grassy hills undulate across a shallow plain, sheep gamble in the pastures and meadows, a windmill gently turns in the distance',
@@ -71,5 +74,12 @@ const setsPlans = {
     exits: [
       { to: 'clearing' }
     ]
-  }
+  },
+
+  teaHouse: {
+    desc: 'a tea house, well, more a hut than house',
+    exits: [{ to: 'clearing'}],
+  },
+
+
 }

@@ -235,6 +235,7 @@ const marshalling = () => {
     })
     cabinet.boxes.bod.push(newThing)
     rigging({boxes: cabinet.boxes})
+    respond(`you made ${newThing.desc}`)
     document.dispatchEvent(new Event('chronicle_prop_moved'))
   }
 
