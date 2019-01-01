@@ -31,6 +31,8 @@ const autoload = () => {
   const loadFiles = () => {
     const path = ''
     s.fl.push(`${path}app/components/data/config.js`)
+    s.fl.push(`${path}app/components/tools/globals.js`)
+    s.fl.push(`${path}app/components/tools/textify.js`)
     s.fl.push(`${path}app/components/tools/tools.js`)
     s.fl.push(`${path}app/components/tools/save.js`)
     s.fl.push(`${path}app/components/tools/elementBuilder.js`)

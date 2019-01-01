@@ -106,31 +106,28 @@ describe('marshalling', () => {
     let sets = {
       noPlace: {
         desc: 'test set',
-        exits: [{id: 'start'}],
-        actions: {
-          open: () => {}
-        }
+        exits: [{to: 'somePlace'}],
       },
       somePlace: {
         desc: 'a test place',
-        exits: [{id: 'start'}],
+        exits: [{to: 'noPlace'}],
       }
     }
-    marshall.props(props)
-    marshall.sets(sets)
-    //actions(marshall).loadActions(props.twiggle)
-    //props.twiggle.actions.env.pickUp('twiggle')
-    marshall.loadBoxes()
-    marshall.character({location: 'noPlace'})
-    marshall.moveProp('twiggle', 'env', 'bod')
-    let cabinet = marshall.cabinet
+    marsh = marshalling()
+    marsh.props(props)
+    marsh.sets(sets)
+    marsh.loadBoxes()
+    marsh.character('simon')
+    marsh.character({location: 'noPlace'})
+    marsh.moveProp('twiggle', 'env', 'bod')
+    let cabinet = marsh.cabinet
     console.info('cabinet', cabinet.boxes);
     expect(cabinet.boxes.bod.length).toBe(1)
-    marshall.moveProp('twiggle', 'bod', 'inv')
+    marsh.moveProp('twiggle', 'bod', 'inv')
     expect(cabinet.boxes.bod.length).toBe(0)
     expect(cabinet.boxes.inv.length).toBe(1)
-    marshall.character({location: 'somePlace'})
-    marshall.moveProp('twiggle', 'inv', 'env')
+    marsh.character({location: 'somePlace'})
+    marsh.moveProp('twiggle', 'inv', 'env')
     expect(cabinet.boxes.bod.length).toBe(0)
     expect(cabinet.boxes.inv.length).toBe(0)
     expect(cabinet.places['somePlace'].props.length).toBe(1)
