@@ -45,7 +45,7 @@ describe('marshalling', () => {
 
   it('can load sets', function() {
     let sets = marshall.sets(setsPlans)
-    expect(sets.start.exits.length > 0).toEqual(true)
+    expect(sets.begining.exits.length > 0).toEqual(true)
   })
 
   it('can create a new player', () => {
@@ -84,8 +84,8 @@ describe('marshalling', () => {
 
   it('can return sets by id', () => {
     marshall.sets(setsPlans)
-    let s = marshall.setsPlansById('start')
-    expect(s.id).toBe('start')
+    let s = marshall.setsPlansById('begining')
+    expect(s.id).toBe('begining')
   })
 
   it('can move a prop from one box to another', () => {

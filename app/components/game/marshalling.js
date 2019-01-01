@@ -204,7 +204,7 @@ const marshalling = () => {
     if (missing.length > 0) {
       let txt = 'you are missing '
       missing.map(i => {
-        prop = propsPlansById(i)
+        let prop = propsPlansById(i)
         txt += `${prop.desc}, `
       })
       txt = txt.substr(0, txt.length -2) + '.'
@@ -213,15 +213,21 @@ const marshalling = () => {
     }
 
     // Combine and destroy
-
-
-
-    console.log(newThing, props, match, missing);
+    newThing.combines.destroys.map(i => {
+      cabinet.boxes.inv.map(e => {
+        if (e.id === i) { spliceProps(cabinet.boxes.inv, i)}
+      })
+      cabinet.boxes.bod.map(e => {
+        if (e.id === i) { spliceProps(cabinet.boxes.bod, i)}
+      })
+    })
+    cabinet.boxes.bod.push(newThing)
+    rigging({boxes: cabinet.boxes})
+    document.dispatchEvent(new Event('chronicle_prop_moved'))
   }
 
   const moveProp = (propId, from, to) => {
     let prop = {}
-    console.log(`move ${propId} from ${from} to ${to}`)
     if (from === 'env') {
       prop = removePropFromPlace(propId, cabinet.character.location)
     } else {
@@ -238,7 +244,7 @@ const marshalling = () => {
       places: cabinet.places
     })
     document.dispatchEvent(new Event('chronicle_prop_moved'))
-    respond(`you moved ${prop.id}`)
+    respond(`you moved ${prop.id} from ${from} to ${to}`)
   }
 
   const addPropToPlace = (prop, placeId) => {

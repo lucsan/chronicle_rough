@@ -76,10 +76,8 @@ const propsPlans = {
 
   lintStick: {
     desc: 'a mysterious lintstick, it has some pocket lint stuck to it. I wonder what this is for?',
+    pickUp: true,
     actions: {
-      env: {
-        pickUp: () => actions().pickUp('lintStick'),
-      },
       inv: {
         give: () => console.log(`give to gnome`),
         tickling: () => console.log(`You tickle something with it`),
