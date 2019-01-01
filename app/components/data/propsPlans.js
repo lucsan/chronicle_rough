@@ -101,11 +101,11 @@ const propsPlans = {
   },
 
   badge: {
-    desc: "A little copper button badge, it says `Adventurer #1`.",
+    desc: 'A little copper button badge, it says `Adventurer #1`.',
     locs: ['bod'],
     actions: {
       bod: {
-        rub: () => {}
+        rub: () => { actions().msg('you give it a little rub and its a tiny bit more shinny') },
       }
     },
   },
@@ -153,7 +153,8 @@ const propsPlans = {
     desc: 'a chicken with a mechanical heart.'
   },
   roboken: {
-    desc: 'a robot with a chickens heart.'
+    desc: 'a robot with a chickens heart.',
+    locs: ['begining']
   },
   vexedSheep: {
     desc: 'a slightly vexed sheep with fluffy white fleece.',

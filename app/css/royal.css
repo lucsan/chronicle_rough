@@ -9,12 +9,15 @@
 .combine { color: blue; }
 
 
-#body { color: brown; }
+#bod { color: brown; }
+#inv { color: darkRed; }
 #inventory { color: darkblue; }
 #environ { color: darkgreen; }
 #place {color: darkGreen; }
+#respond { color: black; border: 1px solid darkGreen; }
 
 .propTitle { color: black; font-weight: bold; }
+.placeTitle { font-weight: bold; }
 
 #exits { color: brown; }
 .exitActions { color: black; }

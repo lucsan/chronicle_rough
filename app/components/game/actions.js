@@ -3,8 +3,14 @@ const actions = () => {
   const loadActions = (prop) => {
 
     loadBods(prop)
-    if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
+    loadEnvs(prop)
     if (prop.actions.inv.grabit == undefined) prop.actions.inv.grabit = () => grabit(prop.id)
+
+  }
+
+  const loadEnvs = (prop) => {
+    if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
+    if (prop.actions.env.look == undefined) prop.actions.env.look = () => inspect(prop)
 
   }
 

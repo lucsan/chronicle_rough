@@ -5,7 +5,7 @@ const stageRoyal = (rigging) => {
     el(undefined, 'display', 'characterDetails').div('Character: ')
     el(undefined, 'display', 'containers').div()
     el(undefined, 'display', 'respond').div()
-    el(undefined, 'display', 'prose').div()
+    //el(undefined, 'display', 'prose').div()
     el(undefined, 'display', 'testArea').div()
 
     el('containers', 'boxes', 'boxes').div()
@@ -46,7 +46,7 @@ const stageRoyal = (rigging) => {
     let placeId = rigging().character.location
     let place = rigging().places[placeId]
     document.getElementById('place').innerHTML = ''
-    el('place', 'title').div(place.title)
+    el('place', 'placeTitle').div(place.title)
     el('place', 'desc', 'placeDesc').div(place.desc)
     if (place.prose) {
       pd = el('place', 'prose', 'prose').div().innerHTML = place.prose
@@ -99,6 +99,7 @@ const stageRoyal = (rigging) => {
       el('boxes', boxId, boxId).div()
       let title = boxId
       if (title === 'inv') title = 'Backpack'
+      if (title === 'bod') title = 'In Hand'
       doBox(boxId, title, boxes[boxId])
     }
   }
