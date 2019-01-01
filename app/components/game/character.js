@@ -11,7 +11,7 @@ const character = (marshall, theater) => {
   }
 
   const loaded = () => {
-    console.log('character loaded');
+    //console.log('character loaded');
     theater.clearCharacterInput()
     theater.updateCharacter()
   }

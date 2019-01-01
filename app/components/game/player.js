@@ -12,7 +12,7 @@ const player = (marshall, theater) => {
   }
 
   const loaded = () => {
-    console.info('player loaded');
+    //console.info('player loaded');
     theater.clearPlayerInput()
     theater.updatePlayer()
   }
