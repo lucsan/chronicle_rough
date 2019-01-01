@@ -6,13 +6,14 @@
 
 .title { font-weight: bold; }
 .action { color: blue; }
-.combine { color: blue; }
+/*.combine { color: blue; }*/
 
 
-#bod { color: brown; }
-#inv { color: darkRed; }
-#inventory { color: darkblue; }
-#environ { color: darkgreen; }
+#bod { color: indigo; }
+#inv { color: maroon; }
+.clickable { color: blue; }
+/*#inventory { color: darkBlue; }*/
+#environ { color: darkGreen; }
 #place {color: darkGreen; }
 #respond { color: black; border: 1px solid darkGreen; }
 
