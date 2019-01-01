@@ -81,7 +81,7 @@ const marshalling = () => {
     if (Object.keys(v).length === 0) return {...cabinet.sets}
     for( let i in v) {
       v[i].id = i
-      v[i].title = tools().makeTitleFromId(i)
+      v[i].title = camelToTitle(i)
     }
     addSetExitsDesc(v)
     cabinet.sets = v
@@ -108,7 +108,7 @@ const marshalling = () => {
     chest({places: cabinet.places})
     rigging({places: cabinet.places})
     document.dispatchEvent(new Event('chronicle_character_moved'))
-    respond(`you went from ${from} to ${to}`)
+    respond(`you went from ${cabinet.places[from].desc} to ${cabinet.places[to].desc}`)
   }
 
   const addNewPlaceToPlaces = (locId) => {

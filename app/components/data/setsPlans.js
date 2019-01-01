@@ -71,14 +71,12 @@ const setsPlans = {
   treeHouse: {
     desc: 'an entire house, in a tree, albeit a one room house',
     proseScript: 'treeHouse',
-    exits: [
-      { to: 'clearing' }
-    ]
+    exits: [{to: 'clearing'}]
   },
 
   teaHouse: {
     desc: 'a tea house, well, more a hut than house',
-    exits: [{ to: 'clearing'}],
+    exits: [{to: 'clearing'}],
   },
 
 

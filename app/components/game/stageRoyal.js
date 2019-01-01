@@ -63,7 +63,7 @@ const stageRoyal = (rigging) => {
     for (let e of exits) {
       el('exits', 'exit', e.to).div()
       if (!e.actions) {
-        el(e.to, 'exit').button(e.desc, () => {exitAction(e.to)})
+        el(e.to, 'exit').button(camelToTitle(e.to), () => {exitAction(e.to)})
       } else {
         doExitActions(e)
       }
@@ -129,7 +129,7 @@ const stageRoyal = (rigging) => {
   const doCombos = (prop, boxId) => {
     if (prop.usedIn.length > 0) {
       prop.usedIn.map( (i) => {
-        el(prop.id, 'combine', `combine-${prop.id}`).button(`used in making ${i}`, () => {rigging().comboAction(i)})
+        el(prop.id, 'combine', `combine-${prop.id}`).button(`used in making ${camelToTitle(i)}`, () => {rigging().comboAction(i)})
       })
     }
   }

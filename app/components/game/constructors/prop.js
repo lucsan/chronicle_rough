@@ -25,7 +25,7 @@ const propConstructor = () => {
   const buildProp = (prop, id) => {
     prop = {...template, ...prop}
     prop.id = id
-    prop.title = tools().makeTitleFromId(id)
+    prop.title = camelToTitle(id)
     prop.usedIn = []
     addAspects(prop)
     addActionBags(prop)
