@@ -3,7 +3,14 @@ const setsPlans = {
   begining: {
     desc: 'A begining. Your character stands poised ready for a new adventure',
     proseScript: 'begining',
-    exits: [{ to: 'clearing', desc: 'Adventure awaits (click here) ...'}]
+    exits: [
+      {to: 'clearing', desc: 'Adventure awaits (click here) ...'},
+      {to: 'testSite'}
+    ]
+  },
+  testSite: {
+    desc: 'hazardous items test area',
+    exits: [{to: 'clearing'}],
   },
   clearing: {
     desc: 'a sun dappled clearing',

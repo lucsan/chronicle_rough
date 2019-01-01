@@ -137,7 +137,7 @@ const propsPlans = {
 
   mingVase: {
     desc: 'a ming dynsaty delicate china vase',
-    locs: ['creepyWoods'],
+    locs: ['testSite', 'creepyWoods'],
     actions: {
       env: {
         pickUp: () => actions().pickUp('stick'),
@@ -147,29 +147,31 @@ const propsPlans = {
 
   washingSoda: {
     desc: 'A tin of sodium carbonate.',
-    locs: ['lab'],
+    locs: ['testSite', 'lab'],
   },
   citricAcid: {
     desc: 'a bag of citric acid.',
-    locs: ['lab'],
+    locs: ['testSite', 'lab'],
   },
   testTube: {
     desc: 'a test tube of dubious cleanliness.',
-    locs: ['lab'],
+    locs: ['testSite', 'lab'],
   },
   chiborg: {
-    desc: 'a chicken with a mechanical heart.'
+    desc: 'a chicken with a mechanical heart.',
+    locs: ['testSite'],
   },
   roboken: {
     desc: 'a robot with a chickens heart.',
-    locs: ['begining']
+    locs: ['testSite', 'begining']
   },
   vexedSheep: {
     desc: 'a slightly vexed sheep with fluffy white fleece.',
-    locs: ['funkyHills']
+    locs: ['testSite', 'funkyHills']
   },
   oldMonk: {
-    desc: 'a calm old monk called Ren-i quietly pushing his broom.'
+    desc: 'a calm old monk called Ren-i quietly pushing his broom.',
+    locs: ['teaHouse']
   }
 
 }
