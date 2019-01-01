@@ -15,7 +15,10 @@ const setsPlans = {
         to: 'creepyWoods',
       },
       {
-        desc: 'a small wooden mysterious door in a tree',
+        to: 'treeHouse'
+      },
+      {
+        desc: 'a small mysterious wooden door in a tree',
         to: 'tree',
         actions: {
           'open': () => {},
@@ -60,6 +63,13 @@ const setsPlans = {
         desc: 'The creepy woods becon with twisted twig',
         to: 'creepyWoods'
       }
+    ]
+  },
+  treeHouse: {
+    desc: 'an entire house, in a tree, albeit a one room house',
+    proseScript: 'treeHouse',
+    exits: [
+      { to: 'clearing' }
     ]
   }
 }

@@ -83,8 +83,20 @@ const marshalling = () => {
       v[i].id = i
       v[i].title = tools().makeTitleFromId(i)
     }
+    addSetExitsDesc(v)
     cabinet.sets = v
     return {...cabinet.sets}
+  }
+
+  const addSetExitsDesc = (sets) => {
+    for (let i in sets) {
+      sets[i].exits.map(e => {
+        if (!e.desc) {
+          e.desc = sets[e.to].desc
+        }
+      })
+    }
+
   }
 
   const moved = (to) => {

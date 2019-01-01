@@ -62,8 +62,20 @@ const stageRoyal = (rigging) => {
   const doExits = (exits, exitAction) => {
     for (let e of exits) {
       el('exits', 'exit', e.to).div()
-      el(e.to, 'exit').button(e.desc, () => {exitAction(e.to)})
+      if (!e.actions) {
+        el(e.to, 'exit').button(e.desc, () => {exitAction(e.to)})
+      } else {
+        doExitActions(e)
+      }
     }
+  }
+
+  const doExitActions = (exit) => {
+    el(exit.to, 'exitActions').div(exit.desc)
+    for (let i in exit.actions) {
+      el(exit.to, 'exitAction', `exitAction-${i}`).button(i)
+    }
+
   }
 
   const movedPlace = () => {

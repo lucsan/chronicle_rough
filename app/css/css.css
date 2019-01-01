@@ -14,5 +14,8 @@
 #environ { color: darkgreen; }
 
 #exits { color: brown; }
+.exitActions { color: black; }
+.exitAction { color: blue; }
+
 
 #testArea { border: 1px solid blue; }
