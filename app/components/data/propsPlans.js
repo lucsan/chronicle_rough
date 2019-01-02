@@ -1,7 +1,5 @@
 const propsPlans = {
-  /* global actions: true */
-  /*eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
-  default: {
+default: {
     artist: '',
     desc: '',
     loc: '',
@@ -168,6 +166,10 @@ const propsPlans = {
   vexedSheep: {
     desc: 'a slightly vexed sheep with fluffy white fleece.',
     locs: ['testSite', 'funkyHills']
+  },
+  articulatedGoat: {
+    desc: 'a goat, articulated at the knees.',
+    locs: ['testSite']
   },
   oldMonk: {
     desc: 'a calm old monk called Ren-i quietly pushing his broom.',
