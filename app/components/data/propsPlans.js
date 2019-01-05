@@ -16,7 +16,7 @@ default: {
     actions: {
       // TODO synonyms for pick up? remove, get, take.
       env: {
-        kick: () => { actions().kick('stick') },
+        kick: () => { propActions().kick('stick') },
       },
       inv: {
         destroy: () => {},
@@ -34,16 +34,27 @@ default: {
     },
   },
 
+  chest: {
+    desc: 'a locked chest',
+    locs: ['testSite', 'clearing'],
+    artist: 'lucsan',
+    actions: {
+      env: {
+        unlock: () => {propActions().unlock('chest')}
+      }
+    }
+  },
+
   welcomizer: {
     desc: 'A welcomizer, its here to help',
     locs: ['begining'],
     pickUp: true,
     actions: {
       env: {
-        ask: () => { actions().msg('Click on pickUp to pick me up') }
+        ask: () => { propActions().msg('Click on pickUp to pick me up') }
       },
       bod: {
-        ask: () => { actions().msg('Click on bagit, to put me in the backpack. Click on drop to drop me.') },
+        ask: () => { propActions().msg('Click on bagit, to put me in the backpack. Click on drop to drop me.') },
       },
     },
   },
@@ -53,7 +64,7 @@ default: {
     locs: ['clearing'],
     actions: {
       env: {
-        speak: () => { actions().msg('ha ha ha, he he he, I\'m a little gnome and you can\'t catch me') },
+        speak: () => { propActions().msg('ha ha ha, he he he, I\'m a little gnome and you can\'t catch me') },
         tickle: () => {},
       },
     },
@@ -64,9 +75,9 @@ default: {
     locs: ['inv'],
     actions: {
       bod: {
-        inspect: () => { actions().msg(`its lint, like you get from your pocket.`) },
-        sniff: () => { actions().msg(`you sniff your lint, it smells vaugly of dust, and pocket.`) },
-        throw: () => { actions().drop('lint') },
+        inspect: () => { propActions().msg(`its lint, like you get from your pocket.`) },
+        sniff: () => { propActions().msg(`you sniff your lint, it smells vaugly of dust, and pocket.`) },
+        throw: () => { propActions().drop('lint') },
       },
     },
   },
@@ -111,7 +122,7 @@ default: {
     pickUp: true,
     actions: {
       bod: {
-        rub: () => { actions().msg('you give it a little rub and its a tiny bit more shinny') },
+        rub: () => { propActions().msg('you give it a little rub and its a tiny bit more shinny') },
       }
     },
   },
@@ -138,7 +149,7 @@ default: {
     locs: ['testSite', 'creepyWoods'],
     actions: {
       env: {
-        pickUp: () => actions().pickUp('stick'),
+        pickUp: () => propActions().pickUp('stick'),
       },
     },
   },

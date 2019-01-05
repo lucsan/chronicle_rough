@@ -1,4 +1,4 @@
-const actions = () => {
+const propActions = () => {
 
   const loadActions = (prop) => {
 
@@ -59,19 +59,60 @@ const actions = () => {
   const dispatch = (detail) => {
     document.dispatchEvent(
       new CustomEvent(
-        'chronicle_action',
+        'chronicle_prop_action',
         {detail: detail}
       )
     )
   }
 
-  const prepDetail = (actionId, propId,from, to) => {
+  const open = (propId) => {}
+
+  const unlock = (propId) => {}
+
+  const prepDetail = (actionId, propId, from, to) => {
     return {actionId: actionId, propId: propId, from: from, to: to}
   }
 
   return {
     loadActions,
     kick,
-    msg
+    msg,
+    open,
+    unlock
   }
+}
+
+const setActions = () => {
+
+  loadActions = (set) => {
+
+  }
+
+
+
+
+  const open = (toId) => {}
+
+  const unlock = (toId) => {}
+
+  const enter = (toId) => {
+    console.log('entering ' +toId);
+    dispatch({to: toId})
+  }
+
+  const dispatch = (detail) => {
+    document.dispatchEvent(
+      new CustomEvent(
+        'chronicle_set_action',
+        {detail: detail}
+      )
+    )
+  }
+
+  return {
+    open,
+    unlock,
+    enter
+  }
+
 }

@@ -18,16 +18,29 @@ const marshalling = () => {
 
   //document.addEventListener('chronicle_action', () => { console.log('ev');  (e) => { actionear(e.detail) }})
   document.addEventListener(
-    'chronicle_action',
-    (e) => { actionear(e.detail)  }
+    'chronicle_prop_action',
+    (e) => {
+      let d = e.detail
+      moveProp(d.propId, d.from, d.to)
+    }
+    //(e) => { actionear(e.detail)  }
+  )
+
+  document.addEventListener(
+    'chronicle_set_action',
+    (e) => {
+      let d = e.detail
+      moveCharacter(d.to)
+    }
+    //(e) => { actionear(e.detail)  }
   )
 
 
-
   const actionear = (d) => {
+
     //if (d.actionId === 'pickUp') moveProp(d.propId, d.from, d.to)
     //if (d.actionId === 'drop') moveProp(d.propId, d.from, d.to)
-    moveProp(d.propId, d.from, d.to)
+
   }
 
   const newCharacter = (aName) => {

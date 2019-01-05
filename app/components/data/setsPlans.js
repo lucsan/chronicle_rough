@@ -5,7 +5,12 @@ const setsPlans = {
     proseScript: 'begining',
     exits: [
       {to: 'clearing', desc: 'Adventure awaits (click here) ...'},
-      {to: 'testSite'}
+      {
+        to: 'testSite',
+        actions: {
+          'enterTestSite': () => {setActions().enter('testSite')}
+        }
+      },
     ]
   },
   testSite: {
@@ -27,8 +32,8 @@ const setsPlans = {
         desc: 'a small mysterious wooden door in a tree',
         to: 'tree',
         actions: {
-          'open': () => {},
-          'unlock': () => {},
+          'open': () => {setActions().open('tree')},
+          'unlock': () => {setActions().unlock('tree')},
           'lock': () => {},
         },
       },
