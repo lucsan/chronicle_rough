@@ -1,6 +1,6 @@
 const propActions = () => {
 
-  const loadActions = (prop) => {
+  const loadDefaultActions = (prop) => {
 
     loadBods(prop)
     loadEnvs(prop)
@@ -28,13 +28,14 @@ const propActions = () => {
     prop.actions.env.pickUp = () => pickUp(prop.id)//(id) => marshall.moveProp(id, 'env', 'bod')
   }
 
-  const pickUp = (propId) => { dispatch(prepDetail('pickUp', propId, 'env', 'bod')) }
+  //const pickUp = (propId) => { dispatch(prepDetail('move', propId, 'env', 'bod')) }
+  const pickUp = (propId) => { dispatchMove(propId, 'env', 'bod') }
 
-  const drop = (propId) => { dispatch(prepDetail('drop', propId, 'bod', 'env')) }
+  const drop = (propId) => { dispatchMove(propId, 'bod', 'env') }
 
-  const bagit = (propId) => {dispatch(prepDetail('bagit', propId, 'bod', 'inv'))}
+  const bagit = (propId) => { dispatchMove(propId, 'bod', 'inv') }
 
-  const grabit = (propId) => {dispatch(prepDetail('grabit', propId, 'inv', 'bod'))}
+  const grabit = (propId) => { dispatchMove(propId, 'inv', 'bod') }
 
   const inspect = (prop) => { msg(prop.desc) }
 
@@ -56,6 +57,10 @@ const propActions = () => {
   }
 
 
+  const dispatchMove = (propId, from, to) => {
+    dispatch({actType: 'move', propId: propId, from: from, to: to})
+  }
+
   const dispatch = (detail) => {
     document.dispatchEvent(
       new CustomEvent(
@@ -65,16 +70,26 @@ const propActions = () => {
     )
   }
 
-  const open = (propId) => {}
+  // Open, close, unlock, lock, putIn, takeOut
+  // open = look inside if unlocked (or no lock)
+  // close = needed?
+  // putIn = put an item inside if unlocked (fits?)
 
-  const unlock = (propId) => {}
 
-  const prepDetail = (actionId, propId, from, to) => {
-    return {actionId: actionId, propId: propId, from: from, to: to}
+
+  const open = (propId) => {console.log('prop open clicked');}
+
+  const unlock = (propId, requires) => {
+    console.log('prop unlock clicked ' + propId + ' ' + requires);
+    dispatch({actType: 'open', propId})
   }
 
+  // const prepDetail = (actType, propId, from, to) => {
+  //   return {actType: actType, propId: propId, from: from, to: to}
+  // }
+
   return {
-    loadActions,
+    loadDefaultActions,
     kick,
     msg,
     open,
@@ -84,16 +99,19 @@ const propActions = () => {
 
 const setActions = () => {
 
-  loadActions = (set) => {
+  loadDefaultActions = (set) => {
 
   }
 
+  // open?
+  // unlock (lock?)
+  // enter (board, mount etc)
 
 
 
   const open = (toId) => {}
 
-  const unlock = (toId) => {}
+  const unlock = (toId) => { console.log('set unlocked clicked');}
 
   const enter = (toId) => {
     console.log('entering ' +toId);

@@ -21,7 +21,8 @@ const marshalling = () => {
     'chronicle_prop_action',
     (e) => {
       let d = e.detail
-      moveProp(d.propId, d.from, d.to)
+      if (d.actType === 'move') moveProp(d.propId, d.from, d.to)
+      console.log('Unknown actType ' + d.actType);
     }
     //(e) => { actionear(e.detail)  }
   )

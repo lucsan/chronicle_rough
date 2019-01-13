@@ -29,7 +29,7 @@ const propConstructor = () => {
     prop.usedIn = []
     addAspects(prop)
     addActionBags(prop)
-    propActions().loadActions(prop)
+    propActions().loadDefaultActions(prop)
     return prop
   }
 

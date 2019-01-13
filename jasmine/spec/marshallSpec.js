@@ -133,21 +133,4 @@ describe('marshalling', () => {
     expect(cabinet.places['somePlace'].props.length).toBe(1)
   })
 
-  // it('can load loadActions', () => {
-  //   let props = {
-  //     twiggle: {
-  //       artist: 'tester',
-  //       desc: 'a twiggle',
-  //       locs: ['inv', 'bod']
-  //     }
-  //
-  //   }
-  //   marshall.props(props)
-  //
-  //
-  //   actions().loadActions(props.twiggle)
-  //   console.log(props)
-  //   expect('a').toBe('b')
-  // })
-
 })
