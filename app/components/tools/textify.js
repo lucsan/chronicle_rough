@@ -1,7 +1,7 @@
 const camelToTitle = (camelCase) => {
   let chars = camelAddSpaces(camelCase)
   let text = charsToText(chars)
-  text = text.charAt(0).toUpperCase() + text.slice(1)
+  text = capitaliseSentence(text)
   return text
 }
 
@@ -9,8 +9,12 @@ const camelToDesc = (camelCase) => {
   let chars = camelAddSpaces(camelCase)
   let text = charsToText(chars)
   text = text.toLowerCase()
-  text = text.charAt(0).toUpperCase() + text.slice(1)
+  text = capitaliseSentence(text)
   return text
+}
+
+const capitaliseSentence = (text) => {
+  return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
 const charsToText = (chars) => {
