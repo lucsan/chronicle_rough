@@ -42,6 +42,7 @@ const autoload = () => {
     s.fl.push(`${path}app/components/game/marshalling.js`)
     s.fl.push(`${path}app/components/game/actions.js`)
     s.fl.push(`${path}app/components/game/constructors/prop.js`)
+    s.fl.push(`${path}app/components/game/constructors/set.js`)
     s.fl.push(`${path}app/components/game/player.js`)
     s.fl.push(`${path}app/components/game/character.js`)
     s.fl.push(`${path}app/components/game/theaterSpace.js`)

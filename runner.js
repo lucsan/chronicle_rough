@@ -41,10 +41,8 @@ function application() {
     //document.getElementById('combine-lint').click()
 
     marshall.character({location: 'testSite'})
-    let t = 'thisIsSomeCamelCaseTestText'
-    console.log(  camelToTitle(t));
-  console.log(camelToDesc(t));
 
+    
     //document.getElementById('pickUp-stick').click()
     //document.getElementById('combine-stick').click()
     //marshall.character({location: 'lab'})

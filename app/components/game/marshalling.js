@@ -93,24 +93,8 @@ const marshalling = () => {
   const sets = (v) => {
     if (v === undefined) return {...cabinet.sets}
     if (Object.keys(v).length === 0) return {...cabinet.sets}
-    for( let i in v) {
-      v[i].id = i
-      v[i].title = camelToTitle(i)
-    }
-    addSetExitsDesc(v)
-    cabinet.sets = v
+    cabinet.sets = setConstructor().build(v)
     return {...cabinet.sets}
-  }
-
-  const addSetExitsDesc = (sets) => {
-    for (let i in sets) {
-      sets[i].exits.map(e => {
-        if (!e.desc) {
-          e.desc = sets[e.to].desc
-        }
-      })
-    }
-
   }
 
   const moved = (to) => {

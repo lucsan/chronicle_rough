@@ -44,6 +44,7 @@ const setsPlans = {
 
   clearing: {
     desc: 'a sun dappled clearing',
+    label: 'a nice clearing',
     proseScript: 'clearing',
     author: 'lucsan',
     exits: [

@@ -63,7 +63,7 @@ const stageRoyal = (rigging) => {
     for (let e of exits) {
       el('exits', 'exit', e.to).div()
       if (!e.actions) {
-        el(e.to, 'exit').button(camelToTitle(e.to), () => {exitAction(e.to)})
+        el(e.to, 'exit').button(camelToDesc(e.desc), () => {exitAction(e.to)})
       } else {
         doExitActions(e)
       }
@@ -71,9 +71,10 @@ const stageRoyal = (rigging) => {
   }
 
   const doExitActions = (exit) => {
-    el(exit.to, 'exitActions').div(exit.desc)
+    el(exit.to, 'exitActions').div(camelToDesc(exit.desc))
     for (let i in exit.actions) {
-      el(exit.to, 'exitAction', `exitAction-${i}`).button(i, exit.actions[i])
+      //exit.actions[i].desc
+      el(exit.to, 'exitAction', `exitAction-${i}`).button(camelToTitle(i), exit.actions[i])
     }
 
   }
@@ -122,7 +123,7 @@ const stageRoyal = (rigging) => {
   const doActions = (prop, boxId) => {
     let acts = prop.actions[boxId]
     for (let i in acts) {
-      el(prop.id, 'action', `${i}-${prop.id}`).button(i, acts[i])
+      el(prop.id, 'action', `${i}-${prop.id}`).button(camelToTitle(i), acts[i])
     }
   }
 
