@@ -5,6 +5,7 @@ default: {
     loc: '',
     locs: [],
     pickUp: false,
+    isBox: false,
     hit: true, // can hit things with it
     strikes: false, // retaliates
   },
@@ -38,11 +39,19 @@ default: {
     desc: 'a locked chest',
     locs: ['testSite', 'clearing'],
     artist: 'lucsan',
+    isBox: true,
     actions: {
       env: {
-        unlock: () => {propActions().unlock('chest')}
+        unlock: () => {propActions().unlock('chest',['chestKey', 'badge'])}
       }
     }
+  },
+
+  chestKey: {
+    desc: 'key for a chest',
+    locs: ['testSite', 'clearing'],
+    artist: 'lucsan',
+    pickUp: true,
   },
 
   welcomizer: {

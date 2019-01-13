@@ -15,8 +15,33 @@ const setsPlans = {
   },
   testSite: {
     desc: 'hazardous items test area',
-    exits: [{to: 'clearing'}],
+    exits: [
+      {to: 'clearing'},
+      {
+        to: 'helicopter',
+        actions: {
+          board: () => {setActions().enter('helicopter')},
+          ride: () => {setActions().ride('helicopter')},
+        },
+      },
+      {
+        to: 'testChest',
+        actions: {
+          unlock: () => {setActions().unlock('testChest')},
+          open: () => {setActions().enter('testChest')},
+        },
+      },
+      {to: 'begining'},
+    ],
   },
+
+  testChest: {
+    desc: 'Set as chest (container)',
+    exits: [
+      {to: 'testSite', desc: 'close the chest'}
+    ]
+  },
+
   clearing: {
     desc: 'a sun dappled clearing',
     proseScript: 'clearing',
@@ -32,9 +57,10 @@ const setsPlans = {
         desc: 'a small mysterious wooden door in a tree',
         to: 'tree',
         actions: {
-          'open': () => {setActions().open('tree')},
-          'unlock': () => {setActions().unlock('tree')},
-          'lock': () => {},
+          open: () => {setActions().open('tree')},
+          unlock: () => {setActions().unlock('tree')},
+          lock: () => {setActions().lock('tree')},
+          knock: () => {setActions().knock('tree')},
         },
       },
       {to: 'lab', desc: 'the laboratory entrance'}
@@ -42,6 +68,7 @@ const setsPlans = {
   },
   creepyWoods: {
     desc: 'some nice creepy woods',
+    proseScript: 'creepyWoods',
     exits: [
       {
         desc: 'a Clearing can be seen through the trees',
@@ -77,8 +104,13 @@ const setsPlans = {
       {
         desc: 'The creepy woods becon with twisted twig',
         to: 'creepyWoods'
-      }
+      },
+      {to: 'bridgeOfSighs'}
     ]
+  },
+  bridgeOfSighs: {
+    desc: 'an ornate bridge with a definate air of sorrow',
+    exits: [{to: 'funkyHills'},],
   },
   treeHouse: {
     desc: 'an entire house, in a tree, albeit a one room house',
@@ -90,6 +122,11 @@ const setsPlans = {
     desc: 'a tea house, well, more a hut than house',
     exits: [{to: 'clearing'}],
   },
+
+  helicopter: {
+    desc: 'a sleek and shinny helecopter',
+    exits: [{to: 'testSite'}],
+  }
 
 
 }
