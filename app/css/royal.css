@@ -1,20 +1,41 @@
-#playerDetails { width: 200px; }
-#playerDetails div { float: right; font-style: italic; color: red; }
+#banner.banner {
+    display: flex;
+}
 
-#characterDetails { width: 200px;}
-#characterDetails div { float: right;  font-style: italic; color: red; }
+#banner.banner > div {
+    width: 50%;
+}
+
+.app-title {
+    font-size: larger;
+}
+
+#playerDetails {/* width: 30%; */font-style: italic;color: red;clear:  right;}
+
+#characterDetails {
+    font-style: italic;
+    color: red;
+    display:  flex;
+    height: 34px;
+}
+
+#characterDetails > div {
+    width: 50%;
+}
+
 
 .title { font-weight: bold; }
 .action { color: blue; }
 /*.combine { color: blue; }*/
 
-
+#boxes {border: 1px solid blue;display: flex;}
+#boxes > div { width: 50%;}
 #bod { color: indigo; }
 #inv { color: maroon; }
 .clickable { color: blue; }
 /*#inventory { color: darkBlue; }*/
 #environ { color: darkGreen; }
-#place {color: darkGreen; }
+#place {color: darkGreen;border: 1px solid darkgreen;}
 #respond { color: black; border: 1px solid darkGreen; }
 
 .propTitle { color: black; font-weight: bold; }
