@@ -1,8 +1,9 @@
 const stageRoyal = (rigging) => {
 
   const build = () => {
-    el(undefined, 'display', 'playerDetails').div('Player: ')
+    el('banner', 'display', 'playerDetails').div('Player: ')
     el(undefined, 'display', 'characterDetails').div('Character: ')
+
     el(undefined, 'display', 'containers').div()
     el(undefined, 'display', 'respond').div()
     //el(undefined, 'display', 'prose').div()
@@ -123,7 +124,10 @@ const stageRoyal = (rigging) => {
   const doActions = (prop, boxId) => {
     let acts = prop.actions[boxId]
     for (let i in acts) {
-      el(prop.id, 'action', `${i}-${prop.id}`).button(camelToTitle(i), acts[i])
+      const title = camelToTitle(i)
+      const emo = emojify(title)
+      const legend = emo? `<span title="${title}" >${emo}</span>`: title;
+      el(prop.id, 'action', `${i}-${prop.id}`).button(legend, acts[i])
     }
   }
 
