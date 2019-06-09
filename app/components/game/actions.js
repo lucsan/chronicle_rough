@@ -10,14 +10,14 @@ const propActions = () => {
 
   const loadEnvs = (prop) => {
     if (prop.actions.env.pickUp == undefined) loadPickUp(prop)
-    if (prop.actions.env.look == undefined) prop.actions.env.look = () => inspect(prop)
+    if (prop.actions.env.look == undefined) prop.actions.env.look = () => examine(prop)
 
   }
 
   const loadBods = (prop) => {
     if (prop.actions.bod.drop == undefined) loadDrop(prop)
     if (prop.actions.bod.bagit == undefined) prop.actions.bod.bagit = () => bagit(prop.id)
-    if (prop.actions.bod.inspect == undefined) prop.actions.bod.inspect = () => inspect(prop)
+    if (prop.actions.bod.examine == undefined) prop.actions.bod.examine = () => examine(prop)
 
   }
 
@@ -37,7 +37,7 @@ const propActions = () => {
 
   const grabit = (propId) => { dispatchMove(propId, 'inv', 'bod') }
 
-  const inspect = (prop) => { msg(prop.desc) }
+  const examine = (prop) => { msg(prop.desc) }
 
   const msg = (msg) => {
     document.dispatchEvent(
