@@ -10,7 +10,7 @@ default: {
     strikes: false, // retaliates
   },
   stick: {
-    desc: 'a nice stick',
+    desc: '🌲 a nice stick',
     locs: ['clearing', 'creepyWoods'],
     artist: 'lucsan',
     pickUp: true,
@@ -84,7 +84,7 @@ default: {
     locs: ['inv'],
     actions: {
       bod: {
-        inspect: () => { propActions().msg(`its lint, like you get from your pocket.`) },
+        examine: () => { propActions().msg(`its lint, like you get from your pocket.`) },
         sniff: () => { propActions().msg(`you sniff your lint, it smells vaugly of dust, and pocket.`) },
         throw: () => { propActions().drop('lint') },
       },

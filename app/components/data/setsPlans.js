@@ -127,6 +127,16 @@ const setsPlans = {
   helicopter: {
     desc: 'a sleek and shinny helecopter',
     exits: [{to: 'testSite'}],
+  },
+
+  puzzleStation: {
+    desc: 'You\'ve done a little exploring, now to progress the story further you must solve a riddle',
+    exits: [{to: 'testSite'}],
+  },
+
+  bannanaFactoryFrontEntrance: {
+    desc: 'And you thought bannans grew on trees.',
+    exits: [{to: 'testSite'}],
   }
 
 

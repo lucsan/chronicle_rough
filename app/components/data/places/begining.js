@@ -1,4 +1,4 @@
-const begining_prose = `Prologue:
+const begining_prose = `🌲 Prologue:
 <p>
 The curtain raises on a new adventure ...
 <p>
