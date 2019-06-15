@@ -2,15 +2,15 @@
     display: flex;
 }
 
-#banner.banner > div {
+/*#banner.banner > div {
     width: 50%;
-}
+}*/
 
 .app-title {
     font-size: larger;
 }
 
-#playerDetails {/* width: 30%; */font-style: italic;color: red;clear:  right;}
+#playerDetails {/* width: 30%; */font-style: italic;color: red; clear:  right;}
 
 #characterDetails {
     font-style: italic;
@@ -19,16 +19,16 @@
     height: 34px;
 }
 
-#characterDetails > div {
+/*#characterDetails > div {
     width: 50%;
-}
+}*/
 
 
 .title { font-weight: bold; }
 .action { color: blue; }
 /*.combine { color: blue; }*/
 
-#boxes {border: 1px solid blue;display: flex;}
+#boxes {border: 1px solid blue; display: flex;}
 #boxes > div { width: 50%;}
 #bod { color: indigo; }
 #inv { color: maroon; }
