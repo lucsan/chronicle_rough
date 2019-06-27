@@ -11,3 +11,5 @@ A trully serverless application, it runs directly in your browser, even when not
 - The development version is [hosted on Netlify](https://chronicle.netlify.com/chronicle.html)
 
 - There is a [Game Runner Script](https://lucsan.github.io/chronicle/runner.html) (used to test the game in action)
+
+😊

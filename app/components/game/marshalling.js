@@ -119,7 +119,7 @@ const marshalling = () => {
 
   const loadProse = (place) => {
     scriptLoader(`app/components/data/places/${place.proseScript}.js`, () => {
-      place.prose = eval(`${place.proseScript}_prose`)
+      place.prose = Function(`return ${place.proseScript}_prose`)()
       document.dispatchEvent(new Event('chronicle_character_moved'))
     })
   }
