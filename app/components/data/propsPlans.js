@@ -194,6 +194,10 @@ default: {
   oldMonk: {
     desc: 'a calm old monk called Ren-i quietly pushing his broom.',
     locs: ['teaHouse']
+  },
+  unidonk: {
+    desc: 'its like a regular unicorn, except its a donkey painted pink and blue, and wearing a pointy hat.',
+    locs: ['testSite']
   }
 
 }

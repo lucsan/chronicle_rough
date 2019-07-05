@@ -60,10 +60,10 @@ const el = (parent = 'app', className = '', id = '' ) => {
   }
 
   return {
-    div: div,
-    button: button,
-    input: input,
-    displayBox: displayBox,
-    removeElement: removeElement,
+    div,
+    button,
+    input,
+    displayBox,
+    removeElement,
   }
 }
